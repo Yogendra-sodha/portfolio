@@ -64,10 +64,21 @@ Things to fix or supply before the site is built.
    the document that gets read first.
 3. ~~What MenuWeek and the Opportunity Cost Widget do.~~ **Resolved** — both
    verified directly; see S2 and S3.
-4. **Screenshots** of the internal tools (A1–A5), scrubbed of employer data —
-   see §4 of `PRINCIPLES.md` before capturing anything.
-5. **Which projects make the cut?** The design has nowhere to hide (§2). This
-   inventory has eleven items and the site should carry far fewer.
+4. **The internal tools cannot be shown at all.** Confirmed by the owner: A1–A6
+   are internal, so there are no screenshots. Note this goes further than
+   images — **the source code is the employer's too**, so no snippets, no tool
+   definitions, no schema fragments either. Their artifact on the site is a
+   schematic drawn from description: the shape of the system, no real data, no
+   real code, nothing proprietary. That is honest, publishable, and for an
+   engineering reader arguably better than a screenshot of a dashboard.
+5. ~~Which projects make the cut?~~ **Resolved** — see §6, revised once the
+   no-screenshot constraint was known.
+6. **Titan needs a cleaner capture.** The owner supplied a four-window desktop
+   screenshot (dashboard at `127.0.0.1:8001` showing `3/3 online · leader #1`,
+   term 174, plus three PowerShell nodes). The content is right; the framing is
+   not — browser chrome, Windows chrome, an "Ask Gemini" button and an update
+   banner are all visual noise the page cannot carry. Recapture per
+   `STRUCTURE.md`.
 
 ---
 
@@ -130,3 +141,54 @@ strangers on the Chrome Web Store, and for their own roommates.
   a learning project — it should never sit beside production work unmarked.
 - **S2 has 10 users.** That is the honest figure and it is worth keeping, but
   the framing is "published, reviewed, installed by strangers", not scale.
+
+---
+
+## 7. Copy drafts
+
+Drafts for the owner to correct. The voice should be theirs; these are a
+starting point to react to, not finished text.
+
+### The line under the name
+
+Target: about eight words, plain, and containing the phrase a recruiter scans
+for. Three options:
+
+- **A — "Data engineer. I make messy operational data answer questions."**
+  *(recommended)* Plain, technical, no metaphor, and the verb does the work.
+- **B — "Data engineer — pipelines, models, and the tools people actually use."**
+  Broader, names the deliverables, slightly longer.
+- **C — "I turn raw production data into answers people trust."**
+  Warmer, but buries the job title, which the reader is scanning for.
+
+### About (~60 words)
+
+The owner's own image — an ocean of raw data refined into something clean and
+usable — is a good one and survives here in a compressed form. It is close to
+"data lake" and "data cleansing", so it reads as apt rather than decorative
+(Apple's familiarity principle: a metaphor should be neither too literal nor too
+abstract).
+
+> I'm a data engineer at a plastics manufacturer in New York. The work has one
+> shape: an ocean of raw production data in, something clean and usable out —
+> pipelines, models and the tools the plant runs on. Evenings, I build small
+> things that remove a bottleneck. Titan is Rust, a language I learned by
+> building it. Badminton is the love; pickleball and volleyball are what
+> actually get played.
+
+### One judgement call for the owner
+
+The rough notes said AI coding removed the barrier to learning new languages,
+and that apps were shipped in languages not previously known. **The draft keeps
+the outcome and drops the mechanism**, for two reasons:
+
+1. Everyone uses AI assistance now; naming it is like naming your editor. It is
+   not the interesting part and it costs a line.
+2. It undersells the work. A model does not decide to implement Raft, choose
+   leader election semantics, or design a state machine adapter. Saying "AI let
+   me write Rust" hands away the part that is actually the owner's.
+
+Nothing here is dishonest — "I built Titan" is true, and tooling is not a
+disclosure. But if the owner wants it explicit, the honest and stronger phrasing
+is *"I lean on AI tooling hard, which is how a chemical engineer ends up
+shipping Rust"* — owning it as method rather than excuse. Owner's call.

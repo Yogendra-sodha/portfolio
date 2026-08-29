@@ -69,17 +69,33 @@ where it costs the reader nothing to learn.
 
 ## Order
 
-Featured, in this sequence — strongest first, and the C7 arc descends naturally:
+**Revised** once it was confirmed that none of the employer work can be shown.
+The original four put three un-screenshottable projects on the page, which would
+have made it three diagrams and one photograph — abstract, and abstract is what
+this design cannot carry.
 
-1. **Production analysis MCP server** — *the plant's analysts and managers*
-2. **Pipelines and dimensional models** — *the plant's reporting, end to end*
-3. **Product lineage platform** — *plant managers and executives*
-4. **Titan, distributed SQLite** — *anyone who `pip install`s it*
+Featured, in this sequence:
 
-Then **Also built** — one line each, no images: weekly email pipeline · daily
-production report app · SQL alert engine · Kafka/Flink attribution pipeline
-(*labelled a learning project, synthetic data*) · Opportunity Cost Widget
-(*Chrome Web Store*) · MenuWeek · JobFlow.
+1. **Production analysis MCP server** — *the plant's analysts and managers* —
+   schematic
+2. **Pipelines and dimensional models** — *the plant's reporting, end to end* —
+   schematic
+3. **Titan, distributed SQLite** — *anyone who `pip install`s it* — real
+   screenshot
+4. **MenuWeek** — *ten roommates, every evening* — real screenshot
+
+Two schematics then two real screenshots: the employer work carries the
+professional weight, the public work carries the visual proof, and the C7 arc
+runs institutional → institutional → public → personal without a break.
+
+**The product lineage platform moves down to the list.** It is strong work and
+this is the cost of it being invisible; its C7 line (*plant managers and
+executives*) is the best in the inventory and is kept there.
+
+Then **Also built** — one line each, no images: product lineage platform ·
+weekly email pipeline · daily production report app · SQL alert engine ·
+Kafka/Flink attribution pipeline (*labelled a learning project, synthetic
+data*) · Opportunity Cost Widget (*Chrome Web Store*) · JobFlow.
 
 Then **About**: ~60 words, one photograph, the sport line, contact.
 
@@ -136,19 +152,39 @@ every capture: **no customer names, no line IDs, no order numbers, no real
 production figures, no internal hostnames or URLs.** Rename to `Product A`,
 `Line 1`. Check the window title and the browser tab, which is where this leaks.
 
-| Project | Artifact needed |
-|---|---|
-| MCP server | One exchange: the question in plain English, the SQL it generated, the answer. The single most persuasive image on the site. |
-| Pipelines | An architecture diagram — **drawn as inline SVG, not a screenshot** |
-| Lineage platform | The lineage graph for one product, relabelled |
-| Titan | A terminal recording: kill the leader, cluster survives. `asciinema`, or a plain terminal screenshot |
+**The employer work cannot be shown — not screenshots, and not code either,
+which is the employer's property.** Both employer entries are therefore inline
+SVG schematics, drawn from description: the shape of the system, with no real
+data, no real code, no real identifiers. For an engineering reader a clear
+schematic beats a screenshot of a dashboard anyway.
+
+| Project | Artifact | Source |
+|---|---|---|
+| MCP server | Schematic: a question in plain language → the tool layer (SQL execution · document generation · retrieval over equipment manuals) → the database → an answer, with the audit log drawn as a first-class output. The audit log is the detail that shows judgement, so it gets weight. | Drawn in code |
+| Pipelines | Schematic: ERP and machine sensors (PLC / OPC-UA) in, staging, dimensional models out, feeding reporting. | Drawn in code |
+| Titan | The dashboard, cropped hard. Best version is a **pair**: `3/3 online · leader #1`, then after killing node 1, `2/3 online · leader #2`. Two states, one story, no video needed. | Owner recaptures |
+| MenuWeek | One real screen of the app in use. | Owner captures |
+
+### Recapturing Titan
+
+The supplied screenshot has the right content and the wrong frame. Remove
+everything that is not the product:
+
+- **Crop to the Titan panel only** — no browser chrome, no address bar, no
+  bookmarks, no "Ask Gemini" button, no "New Chrome available" banner, no
+  Windows title bars.
+- **Two captures, same crop**: before and after killing the leader. Side by side
+  they prove failover; either one alone proves nothing.
+- The terminals are optional. If they are included, one is enough, and it should
+  show the election, not the cargo build warnings.
+- Its palette — near-black terminal, near-white dashboard, a green status dot —
+  already fits the page. Its colour is allowed because it is the artifact's own.
 
 ## Open
 
-- The one line under the name. It has to answer "what do you do" in about eight
-  words and it is the hardest sentence on the site.
-- The About paragraph, in the owner's own voice.
+- ~~The line under the name~~ and ~~the About paragraph~~ — drafted in
+  `CONTENT.md` §7, awaiting the owner's corrections.
 - A photograph.
 - Resume: as a linked PDF, and it needs the dead GitHub URL fixed first
-  (`CONTENT.md` §4).
+  (`CONTENT.md` §4). Correct account: `github.com/Yogendra-sodha`.
 - Domain: custom, or `github.io`.
