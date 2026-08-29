@@ -40,16 +40,16 @@ belong on this site.
 **Reference: Mike Matas's portfolio (mikematas.com).** Not to copy — to learn
 the discipline from.
 
-What that site actually does, and why it works: he is an interface designer, so
-his site *is* the argument. Nobody has to take his word for it. The restraint,
-the pacing, the way each project is shown running on the device it was built
-for — the site demonstrates the skill instead of claiming it. The copy is
+What that site actually does, and why it works: Matas is an interface designer,
+so the site *is* the argument. Nobody has to take the claims on faith. The
+restraint, the pacing, the way each project is shown running on the device it
+was built for — the site demonstrates the skill instead of claiming it. The copy is
 short because the work isn't.
 
 **The translation to data engineering is not "make it pretty."** It is:
 
-> The site should demonstrate engineering judgment the way his demonstrates
-> interface judgment.
+> The site should demonstrate engineering judgment the way that site
+> demonstrates interface judgment.
 
 An interface designer proves it with an interface. A data engineer proves it
 with **clarity under complexity** — the ability to take something genuinely
@@ -109,7 +109,7 @@ These are not negotiable for speed or for looks.
   defended, calmly, in an interview by someone who is asked "how did you get
   that?" A number that can't survive that question does not go on the site.
 - No AI-written filler presented as a personal voice. The words are the
-  owner's. Drafting help is fine; publishing something he wouldn't say out
+  owner's. Drafting help is fine; publishing something they wouldn't say out
   loud is not.
 - Failed and abandoned work can be described as such. It is more credible than
   a wall of successes, not less.
