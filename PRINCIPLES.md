@@ -301,10 +301,11 @@ teeth here:
   chore that follows it. This is the same claim as §5, arrived at from the
   design side rather than the ops side.
 - **Delight** — "not by adding confetti or tacking on extra flourishes at the
-  end"; instead, name the emotion you want and reinforce it. **Ours: a hiring
-  manager should finish the page feeling that this person is clear, careful,
-  and worth a conversation.** Calm and trusting, not dazzled. If a proposed
-  flourish doesn't move that feeling, it goes.
+  end"; instead, name the emotion you want and reinforce it. **Ours, confirmed
+  by the owner and now settled: a hiring manager should finish the page feeling
+  that this person is clear, careful, and worth a conversation.** Calm and
+  trusting, not dazzled. If a proposed flourish doesn't move that feeling, it
+  goes. This is the tie-breaker for every later argument about a detail.
 - **Agency and Forgiveness** — mostly not applicable; a bio site has no
   destructive actions to undo. The residue that does apply: let people move
   through it their own way, and never trap them in a path.
@@ -336,6 +337,19 @@ These are not negotiable for speed or for looks.
   loud is not.
 - Failed and abandoned work can be described as such. It is more credible than
   a wall of successes, not less.
+
+### Numbers on the site
+
+**Settled: orders of magnitude, not exact figures.** The resume says 100GB, 3TB,
+200+ finished goods, ~15 pipelines. The site says "terabyte-scale multi-source
+pipelines", "hundreds of finished goods". A resume goes to one recruiter; this
+page is public and indexed for years, and exact operational volumes attached to
+a named employer are the employer's to publish, not ours.
+
+The engineering signal survives the rounding. An engineer reads "terabyte-scale"
+and "~15 production pipelines" and learns everything they needed to. Nothing on
+the site should be a number the owner could not calmly defend, or that a
+manager at the named employer would be unhappy to find on Google.
 
 ### Employer and client data
 
