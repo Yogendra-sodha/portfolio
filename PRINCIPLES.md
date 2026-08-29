@@ -38,62 +38,130 @@ belong on this site.
 ## 2. The design center
 
 **Reference: Mike Matas's portfolio (mikematas.com).** Not to copy — to learn
-the discipline from.
+the discipline from. What follows was measured by loading and driving the real
+site in a browser, not recalled or guessed.
 
-What that site actually does, and why it works: Matas is an interface designer,
-so the site *is* the argument. Nobody has to take the claims on faith. The
-restraint, the pacing, the way each project is shown running on the device it
-was built for — the site demonstrates the skill instead of claiming it. The copy is
-short because the work isn't.
+### What the site actually is
 
-**The translation to data engineering is not "make it pretty."** It is:
+A single horizontal timeline of a career, running **backwards**. At 1440px wide
+the page is ~7,210px of horizontal scroll and exactly one viewport tall. A
+normal downward mouse wheel moves you **sideways** through it. Sixteen projects,
+newest first, from Lobe (2020) back to Delicious Library (2004).
+
+Each project is a still image of the actual product, sitting in the device it
+shipped on — an original iPhone for the 2007 work, an iPad for 2010, a laptop
+for Lobe. No video on the timeline. The next project is always half-visible at
+the right edge, and that bleed is the only thing telling you to keep going.
+There is no arrow, no "scroll" hint, no progress bar.
+
+### The trick
+
+Under his name is a year. It is **bound to scroll position**. Scrolling right
+counts it down — 2026, 2015, 2014, 2011, 2010, 2007, 2006, 2005, 2004 — so
+moving through the page is moving back through his career. One number, in one
+fixed place, changing as you move.
+
+That is the entire concept, and it costs almost nothing to build. It is worth
+studying precisely because it is not expensive. It is one idea, executed
+exactly, and it does the work that a page of self-description would do badly.
+
+### The measured specifics
+
+**The palette is three values. Not three colours — three values:**
+
+- `rgb(0, 0, 0)` — black
+- `rgba(0, 0, 0, 0.4)` — the same black at 40%, which is the only "grey"
+- `rgba(255, 255, 255, 0.94)` — near-white
+
+There is no fourth. Every scrap of colour on that site comes out of the
+screenshots of the work itself: the green of Lobe, the orange of a photograph.
+**The chrome is monochrome so the work supplies the colour.** That is the
+mechanism behind "pure black and white," and it is a much sharper rule than
+"use less colour."
+
+**One typeface, essentially one size.** Lab Grotesque (a commercial licence —
+worth knowing before planning to match it). Nearly every word on the page is
+**18px**. The name is 40px. That's the whole scale.
+
+Hierarchy is carried by **weight and opacity instead of size**:
+
+| Role | Size | Weight | Colour |
+|---|---|---|---|
+| Project name | 18px | 600 | black |
+| His role ("Founder") | 18px | 100 | black |
+| Collaborator names | 18px | 100 | black @ 40% |
+| Name / year | 40px | 400 | black |
+| Nav (About, Twitter) | 20px | 100 | black @ 40% |
+
+Weight **100** — ultra-light — for almost all running text. The loudest thing
+on the page is 600, and it is used for one word at a time.
+
+**Motion is not CSS.** There is exactly one keyframe animation in the entire
+stylesheet (a loading spinner) and essentially no CSS transitions. The
+smoothness is JavaScript bound to scroll offset. The feel does not come from
+easing curves sprinkled on hover states; it comes from one thing tracking
+your input continuously.
+
+**Restraint in the content, not just the layout.** The project metadata — name,
+role, company, and a full list of collaborators — is in the page but sits at
+`visibility: hidden` on the timeline. At rest you see the work and nothing
+else. And the credits, when shown, name **every** person he worked with: Steve
+Jobs, Bas Ording, Imran Chaudhri, Al Gore, Tony Fadell. Generosity as a
+credibility signal.
+
+**The About page is ~60 words.** One paragraph, one black-and-white photograph
+(desaturated, so it cannot compete with the work), three links: Email, Twitter,
+Instagram. Opening it blurs and fades the timeline out behind it. That is the
+entire "about me" of a person with that CV.
+
+**No third-party requests.** Loading the page fetched its own code and its own
+sixteen images. No analytics, no tag manager, no hosted fonts phoning home.
+
+### What to take, and what not to
+
+**Take:** the three-value palette and the rule underneath it. Hierarchy by
+weight and opacity rather than size. One organising idea executed exactly.
+Content bleeding off-edge as the only affordance. Metadata withheld until
+asked for. Crediting collaborators by name. A short About.
+
+**Do not take:** the site sets `user-scalable=no, maximum-scale=1.0`, which
+blocks pinch-zoom on a phone. That fails §3 of this document. A horizontal
+scroll hijack and `visibility: hidden` metadata are also hostile to screen
+readers and keyboard users. **We copy the restraint, not the accessibility
+debt.**
+
+### The translation to data engineering
+
+**It is not "make it pretty."** It is:
 
 > The site should demonstrate engineering judgment the way that site
 > demonstrates interface judgment.
 
 An interface designer proves it with an interface. A data engineer proves it
-with **clarity under complexity** — the ability to take something genuinely
-messy and make the shape of it obvious. That is the actual skill, and a site
-can show it:
+with **clarity under complexity** — taking something genuinely messy and making
+its shape obvious. That is the actual skill, and a page can perform it:
 
-- Show a real query, a real schema, a real pipeline diagram, a real chart —
-  the artifact in the medium it actually lives in. Not a paragraph describing
-  that a pipeline exists.
-- The hardest part of the job is deciding what to leave out of a report. A
-  site that leaves things out is the same skill, performed in public.
-- Restraint reads as confidence. Clutter reads as someone hedging.
+- Show a real query, a real schema, a real pipeline, a real chart — the
+  artifact in the medium it lives in. Not a paragraph asserting a pipeline
+  exists.
+- The hardest part of the job is deciding what to leave out of a report. A site
+  that leaves things out performs that same judgment in public.
+- Restraint reads as confidence. Clutter reads as hedging.
 
-**This is the trade-off, stated plainly so nobody is surprised by it later:**
-a minimal site of this kind carries no filler. There is nowhere to hide. It
-works only if the two or three projects on it are genuinely good and honestly
-described. The design cannot rescue thin content — it will expose it. That is
-a feature, and it means the writing is the hard part of this project, not the
-CSS.
+The open design question this raises — **what is our equivalent of the year
+counter?** — is deliberately not answered here. It needs one idea, not five.
 
-### Aesthetic
-
-Pure black and white, Apple-like. Concretely:
-
-- **Monochrome by default.** Black, white, and a couple of greys. Colour is
-  not decoration — colour is *information*. It appears where it means
-  something (a value in a chart, a state, a link) and nowhere else. One accent
-  at most, used rarely enough that it still lands when it shows up.
-- **Typography carries the design.** Big, confident, well-spaced type on a
-  quiet ground. If the layout only works because of a gradient, a shadow, a
-  border, or a card, the layout is not working.
-- **Whitespace is not empty.** It is the pacing. Resist the urge to fill it.
-- **Motion explains or does not exist.** No animation for the sake of proving
-  something can animate. Anything that moves must clarify a transition or a
-  relationship. Respect `prefers-reduced-motion`.
-- **The chrome disappears.** Navigation should be almost invisible until it's
-  needed, and obvious the moment it is.
-- **Fewer pages, deeper pages.** One strong page beats five thin ones.
+**The trade-off, stated plainly so nobody is surprised later:** a site like this
+carries no filler. There is nowhere to hide. It works only if the few projects
+on it are genuinely good and honestly described. The design cannot rescue thin
+content — it will expose it. That is a feature, and it means the writing is the
+hard part of this project, not the CSS.
 
 ### The default answer is no
 
-Every feature, section, library, animation, and widget starts as a **no** and
-has to earn a yes by serving one of the reader's three questions. When in
-doubt, remove it and see if anything is actually missing. Usually nothing is.
+Every feature, section, library, animation and widget starts as a **no** and has
+to earn a yes by serving one of the reader's three questions. When in doubt,
+remove it and see if anything is actually missing. Usually nothing is.
 
 ---
 
@@ -203,9 +271,8 @@ Held deliberately, to be settled before or during build:
 
 - **More design references are coming** from the owner (articles on UI
   principles, plus other portfolios). Nothing is final until those are read.
-  Note: mikematas.com could not be opened from the build environment — the
-  network blocks it — so the reading of that site above is secondhand and
-  needs correcting by someone who can see it.
+- **What is our equivalent of the year counter?** The one organising idea the
+  page is built around. Unanswered on purpose — see §2.
 - **Plain HTML/CSS, or a static generator?** The repository currently carries a
   Python `.gitignore`, which may or may not signal an intent. This is a real
   fork in the road for the maintenance promise in §4.
