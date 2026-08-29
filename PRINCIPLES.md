@@ -20,6 +20,12 @@ place that collects anything from anybody.
 A hiring manager or recruiter who opened the link from a resume, on a phone,
 between two other candidates, with maybe thirty seconds of patience.
 
+Thirty seconds is the budget for *reading*. The judgment starts far earlier:
+people form a stable aesthetic impression of a page within **17 milliseconds**
+of seeing it, before a single word is processed (§3). We do not get to earn
+that first impression with good content. The layout either reads as competent
+instantly, or the content is being read by someone who has already decided.
+
 Every decision on this site answers to that person. Not to designers on
 Dribbble, not to a framework's best-practice guide, not to my own interest in
 building something clever.
@@ -120,15 +126,22 @@ sixteen images. No analytics, no tag manager, no hosted fonts phoning home.
 ### What to take, and what not to
 
 **Take:** the three-value palette and the rule underneath it. Hierarchy by
-weight and opacity rather than size. One organising idea executed exactly.
-Content bleeding off-edge as the only affordance. Metadata withheld until
-asked for. Crediting collaborators by name. A short About.
+weight and opacity rather than size. One organising idea, executed exactly.
+Crediting collaborators by name. A short About. Generous outer margins with
+tight internal grouping.
 
-**Do not take:** the site sets `user-scalable=no, maximum-scale=1.0`, which
-blocks pinch-zoom on a phone. That fails §3 of this document. A horizontal
-scroll hijack and `visibility: hidden` metadata are also hostile to screen
-readers and keyboard users. **We copy the restraint, not the accessibility
-debt.**
+**Do not take:**
+
+- `user-scalable=no, maximum-scale=1.0`, which blocks pinch-zoom on a phone.
+  That fails §4 of this document.
+- The horizontal scroll hijack — hostile to keyboard and screen-reader users,
+  and see §3 on prototypicality for the separate reason it costs us.
+- `visibility: hidden` metadata. It is *minimal*, not *simple* (§3). Where the
+  reader needs a fact, the fact is visible.
+- The off-edge bleed as the *only* affordance. It is elegant, and it relies on
+  a visitor willing to experiment. Ours will not be.
+
+**We copy the restraint, not the accessibility debt and not the navigation.**
 
 ### The translation to data engineering
 
@@ -149,7 +162,8 @@ its shape obvious. That is the actual skill, and a page can perform it:
 - Restraint reads as confidence. Clutter reads as hedging.
 
 The open design question this raises — **what is our equivalent of the year
-counter?** — is deliberately not answered here. It needs one idea, not five.
+counter?** — is deliberately not answered here. It needs one idea, not five,
+and per §3 it has to sit inside a conventional layout rather than replace one.
 
 **The trade-off, stated plainly so nobody is surprised later:** a site like this
 carries no filler. There is nowhere to hide. It works only if the few projects
@@ -165,7 +179,148 @@ remove it and see if anything is actually missing. Usually nothing is.
 
 ---
 
-## 3. Ethics
+## 3. What the evidence says
+
+Three sources beyond the reference site: Apple's *Principles of great design*
+(WWDC 2026, session 250), Ngo, Teo & Byrne (2003) on computable interface
+aesthetics, and Tuch et al. (2012) on first impressions. They agree with each
+other more than they disagree — and where they disagree with the reference
+site, they win.
+
+### The finding that changes the plan
+
+Tuch et al. showed people screenshots of websites for **17 milliseconds** and
+asked how appealing they were. Two factors predicted the answer:
+
+- **Visual complexity (VC)** — less is better, and the relation was linear, not
+  an inverted U. Websites are already complex stimuli; reducing complexity kept
+  helping.
+- **Prototypicality (PT)** — how much a page matches what people expect a page
+  of its kind to look like. More is better.
+
+Both registered within 17 ms. VC is processed earlier; **PT's effect grows with
+exposure time** until, by 500–1000 ms, it matters as much as complexity. And
+the sentence that matters most for us:
+
+> "Websites of low prototypicality are generally judged as being unattractive
+> — in fact, this counts for websites of high as well as low complexity."
+
+**A low-prototypicality layout is not rescued by being clean.** Their closing
+advice is that designs contradicting what users expect "may trigger a
+suboptimal first impression and impair users' expectations."
+
+Now score the reference site. Matas is **excellent on VC** — three colour
+values, one type size, nothing on screen that isn't the work. He is **poor on
+PT**: a horizontal timeline, a wheel that scrolls sideways, no visible
+navigation conventions, metadata hidden at rest.
+
+He can afford that. He is a famous interface designer and the strangeness *is*
+the demonstration; people arrive already wanting to see what he did. A data
+engineer applying for jobs has none of that credit. The same choice that reads
+as confidence on his site reads as "I can't find the thing" on ours.
+
+Apple arrives at the same place from a different direction. **Familiarity:**
+"build on what people know," "for common actions, there's no need to reinvent
+the wheel," and consistent placement means people "don't have to think about
+it." **Agency:** "Instead of guiding someone down a pre-determined path, let
+them dive right into your experience... at their own pace" — which is precisely
+what a scroll hijack takes away.
+
+So three independent lines — the 2012 experiment, Apple's principles, and the
+accessibility floor in §4 — converge on the same instruction:
+
+> **Borrow the restraint, not the navigation.** Conventional structure:
+> vertical scroll, navigation where navigation goes, sections in the order a
+> reader expects. Then spend the entire novelty budget on **one** idea inside
+> that familiar shell.
+
+*Honest limit on this evidence:* Tuch's stimuli were company and organisation
+websites, rated in a lab, mostly by students. Not personal portfolios, and not
+hiring managers. The direction of the effect is well replicated and I'd act on
+it; the exact size of it for our case is not something that study measured.
+
+### Simple is not minimal
+
+Apple's sharpest correction, and it lands directly on the reference site:
+
+> "If you bury all your functionality inside a single place, that might make
+> your interface look more minimal, but it doesn't make it simple."
+
+Simplicity is *frictionless and intuitive* — people find what they need without
+effort. Clarity is built with hierarchy: order, spacing, contrast. "When your
+hierarchy is strong, the most important item on the screen is always the most
+obvious one." And sometimes simple means **adding**: context, a label, a number
+that lets someone make an informed decision.
+
+Consequence: Matas's metadata sitting at `visibility: hidden` is *minimal*, not
+*simple*. We don't copy it. Where a project's role, stack, or outcome is what
+the reader needs, it is visible by default.
+
+This is the guard rail on our own "default answer is no." Cutting until the
+page looks empty is not the goal. Cutting until nothing is left but what the
+reader needs is.
+
+### Computable checks (Ngo, Teo & Byrne)
+
+Fourteen measures for screen layout, each scored 0–1. Use them as a **checklist
+to argue with, not a score to chase** — it is a proposed model with limited
+validation, and no layout is good because it computes well. The ones with real
+teeth here:
+
+- **Economy = 1 / (number of distinct sizes).** Fewest sizes wins outright.
+  Matas uses about three. Ours: **four or fewer across the entire site.**
+- **Unity** — leave *less* space between elements than at the margins. Generous
+  outer margins, tight internal grouping. This is exactly what the reference
+  site does and why groups read as single objects.
+- **Regularity and Simplicity** — minimise the number of distinct alignment
+  points. One grid, few columns, everything landing on the same lines.
+- **Sequence** — arrange so the eye moves big to small, upper-left to
+  lower-right. Decide deliberately what gets seen first, second, third.
+- **Balance and Equilibrium** — optical weight even across both axes; centre of
+  mass near the centre of the frame.
+- **Proportion** — prefer ratios that have survived: 1:1, 1:1.414, 1:1.618,
+  1:1.732, 1:2. Applies to image blocks and text columns.
+- **Cohesion** — keep aspect ratios consistent between elements.
+- **Density** — worth flagging because it cuts against fashion: their measure
+  *peaks around 50% screen coverage*, not at maximum emptiness. Whitespace is
+  pacing, not a virtue in itself. The page should read as composed, not
+  evacuated.
+
+### The rest of Apple's principles, folded in
+
+- **Purpose** — "Every feature you add to your product asks something of the
+  person using it. It asks for their time, their attention, and their trust."
+  That is the *reason* behind our default-no, stated better than we stated it.
+- **Responsibility** — "Privacy is a human right." Ask only when there's a
+  reason, and give context first. We collect nothing, so we clear this by
+  construction (§4).
+- **Flexibility** — support real contexts and the full range of abilities: a
+  phone on a bad signal, a screen reader, tired eyes at the end of a day of
+  CVs. Feeds the accessibility floor in §4.
+- **Craft** — "Great design has longevity." Maintenance *is* craft, not a
+  chore that follows it. This is the same claim as §5, arrived at from the
+  design side rather than the ops side.
+- **Delight** — "not by adding confetti or tacking on extra flourishes at the
+  end"; instead, name the emotion you want and reinforce it. **Ours: a hiring
+  manager should finish the page feeling that this person is clear, careful,
+  and worth a conversation.** Calm and trusting, not dazzled. If a proposed
+  flourish doesn't move that feeling, it goes.
+- **Agency and Forgiveness** — mostly not applicable; a bio site has no
+  destructive actions to undo. The residue that does apply: let people move
+  through it their own way, and never trap them in a path.
+
+### Sources
+
+- Apple, *Principles of great design*, WWDC 2026, session 250.
+- Ngo, D.C.L., Teo, L.S., Byrne, J.G. (2003). Modelling interface aesthetics.
+  *Information Sciences* 152, 25–46.
+- Tuch, A.N., Presslaber, E.E., Stöcklin, M., Opwis, K., Bargas-Avila, J.A.
+  (2012). The role of visual complexity and prototypicality regarding first
+  impression of websites. *Int. J. Human-Computer Studies* 70, 794–811.
+
+---
+
+## 4. Ethics
 
 These are not negotiable for speed or for looks.
 
@@ -218,7 +373,7 @@ Accessibility is a floor, not a feature:
 
 ---
 
-## 4. How it's built and run
+## 5. How it's built and run
 
 The stated constraint: **minimal deployment, nothing to maintain, nothing
 collected, free.**
@@ -247,7 +402,7 @@ than small. So:
 
 ---
 
-## 5. Deciding, when it's unclear
+## 6. Deciding, when it's unclear
 
 In order:
 
@@ -272,10 +427,12 @@ Held deliberately, to be settled before or during build:
 - **More design references are coming** from the owner (articles on UI
   principles, plus other portfolios). Nothing is final until those are read.
 - **What is our equivalent of the year counter?** The one organising idea the
-  page is built around. Unanswered on purpose — see §2.
+  page is built around, and the only place the novelty budget gets spent.
+  Constrained by §3: it lives inside a conventional layout. Unanswered on
+  purpose.
 - **Plain HTML/CSS, or a static generator?** The repository currently carries a
   Python `.gitignore`, which may or may not signal an intent. This is a real
-  fork in the road for the maintenance promise in §4.
+  fork in the road for the maintenance promise in §5.
 - **Which projects go on it, and are they strong enough to carry a design with
   nowhere to hide?** (See §2. This is the highest-risk open question.)
 - **Resume as a downloadable PDF, or as the page itself?**
