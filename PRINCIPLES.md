@@ -401,8 +401,11 @@ than small. So:
 
 - **Static site. No backend, no database, no server-side runtime.** Content
   lives in the repository.
-- Free static hosting (GitHub Pages or Cloudflare Pages — decision pending),
-  deployed by pushing to the branch. No deploy pipeline to babysit.
+- **Free static hosting on Vercel**, deployed by pushing. No deploy pipeline to
+  babysit. Vercel also offers a Postgres and a Supabase integration: **we do not
+  use them.** A site that collects nothing has nothing to store, and an unused
+  database is a password to rotate and a free tier to outlive. If a future
+  feature seems to need one, that is the signal to question the feature.
 - **Content is editable without a rebuild toolchain being remembered.** Coming
   back after eight months to update one job title must not require an
   archaeology session. If the build needs a README to run, the build is too
@@ -410,6 +413,13 @@ than small. So:
 - **Dependencies are a maintenance cost, so they start at zero.** Each one has
   to justify its own upkeep. A framework that needs quarterly patching to
   serve a page of text has not justified it.
+- **One exception, taken deliberately: the typeface.** The system font stack
+  costs nothing and looks like nothing, and on a page this bare the face is
+  carrying most of the personality. Archivo is self-hosted from this repository
+  under the SIL Open Font License — two files, about 67KB, no third party
+  contacted, no licence to renew. Hosted fonts (Google Fonts and the rest) are
+  still refused: they would make every visitor's browser talk to someone else,
+  which breaks §4.
 - Core content is real HTML and works with JavaScript off. JS enhances; it is
   never the reason a paragraph is visible.
 - It should still work, untouched, in three years.

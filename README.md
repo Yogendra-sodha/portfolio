@@ -26,9 +26,11 @@ python3 -m http.server 8000
 ## Files
 
 ```
-index.html          the whole page
-assets/styles.css   the visual system
-assets/slot.js      the one idea — the sticky "Used by" line
+index.html                    the whole page
+assets/styles.css             the visual system
+assets/slot.js                the one idea — the sticky "Used by" line
+assets/fonts/archivo-*.woff2  the typeface, self-hosted
+assets/fonts/OFL.txt          its licence — keep it with the files
 ```
 
 `assets/slot.js` is progressive enhancement. With JavaScript off the sticky
@@ -37,7 +39,13 @@ nothing is lost.
 
 ## Deploy
 
-GitHub Pages, from the repository root. No pipeline, nothing to babysit.
+**Vercel**, free tier, from the repository root. It is a static site, so there
+is nothing to configure: import the repo, accept the defaults (no framework, no
+build command, output = root) and every push deploys.
+
+No database. Vercel will offer you Postgres and Supabase — the site collects
+nothing, so it has nothing to store, and an unused database is just a password
+to rotate. See `PRINCIPLES.md` §5.
 
 ## Still outstanding
 
@@ -65,4 +73,6 @@ Open it and confirm:
 - The sticky line goes quiet above the first project and below the last, rather
   than leaving a stale audience on screen.
 - Dark mode still reads. Both diagrams draw in `currentColor`, so they invert.
-- Nothing loads from a third party. No analytics, no hosted fonts, no cookies.
+- Nothing loads from a third party. No analytics, no cookies. The typeface is
+  served from `assets/fonts/`, not from a font CDN — check the network panel
+  shows only your own origin.
