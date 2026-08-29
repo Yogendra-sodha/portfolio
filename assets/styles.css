@@ -25,9 +25,9 @@
   --s-body: 1.125rem;                 /* 18px */
   --s-meta: 0.9375rem;                /* 15px */
 
-  --measure: 34rem;                   /* ~66 characters */
-  --page: 48rem;
-  --gap: clamp(4rem, 12vh, 7rem);     /* rhythm between sections */
+  --measure: 34rem;                   /* ~66 characters — reading width */
+  --page: 60rem;                      /* the band the work is allowed to fill */
+  --gap: clamp(6rem, 20vh, 11rem);    /* one project should own the screen */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -44,10 +44,10 @@ html {
   -webkit-text-size-adjust: 100%;
   /* The slot is sticky, so anchored jumps must clear it or they land with the
      heading hidden underneath. */
-  scroll-padding-top: 4rem;
+  scroll-padding-top: 6rem;
 }
 
-main > section, h1, h2 { scroll-margin-top: 4rem; }
+main > section, h1, h2 { scroll-margin-top: 6rem; }
 
 body {
   margin: 0;
@@ -101,7 +101,7 @@ main > section { padding-block: 0 var(--gap); }
 
 h1 {
   font-size: var(--s-name);
-  font-weight: 400;
+  font-weight: 300;
   letter-spacing: -0.02em;
   margin: 0;
 }
@@ -109,7 +109,7 @@ h1 {
 .lede {
   font-size: var(--s-body);
   max-width: var(--measure);
-  margin: 0.5rem 0 1.75rem;
+  margin: 0.6rem 0 2rem;
 }
 
 /* ---------- the one idea ----------
@@ -128,16 +128,25 @@ h1 {
 .slot-inner {
   max-width: var(--page);
   margin-inline: auto;
-  padding: 0.9rem clamp(1.25rem, 6vw, 3rem);
-  font-size: var(--s-meta);
+  padding: 1.1rem clamp(1.25rem, 6vw, 3rem) 1.3rem;
 }
 
-.slot-label { color: var(--ink-muted); }
-.slot-label::after { content: ":"; }
+.slot-label {
+  display: block;
+  color: var(--ink-muted);
+  font-size: var(--s-meta);
+}
+.slot-label::after { content: ""; }
 
+/* Big and light, the way the reference sets its year. This is the line the
+   reader is meant to watch, so it gets the weight budget the page has been
+   saving: 24px at 300 against 600 elsewhere. */
 .slot-value {
   display: inline-block;
-  margin-left: 0.4em;
+  font-size: var(--s-head);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
   transition: opacity 0.35s ease;
 }
 .slot-value.is-changing { opacity: 0; }
@@ -157,6 +166,9 @@ h1 {
 }
 
 .project p { max-width: var(--measure); margin: 0 0 0.9rem; }
+
+/* Text reads narrow, work shows wide. */
+.project h2, .also li, .about p { max-width: var(--measure); }
 
 /* Each project states its own audience. Visible when JS is off (it is the
    only place the information appears); available to screen readers always,
@@ -184,7 +196,7 @@ code {
 
 /* ---------- artifacts ---------- */
 
-.art { margin: 0 0 0.5rem; }
+.art { margin: 0 0 1.5rem; }
 
 .art figcaption { margin-top: 0.6rem; }
 
@@ -216,7 +228,7 @@ code {
 .dia {
   display: block;
   width: 100%;
-  min-width: 34rem;   /* below this the labels stop being readable */
+  min-width: 38rem;   /* below this the labels stop being readable */
   margin-bottom: 0.25rem;
   height: auto;
   color: var(--ink);
