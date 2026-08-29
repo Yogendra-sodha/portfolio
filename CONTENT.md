@@ -74,8 +74,11 @@ Things to fix or supply before the site is built.
 ## 5. Candidates for the one organising idea
 
 The equivalent of the reference site's scroll-bound year counter: one fixed slot
-whose value changes as you move through the work. One will be chosen; the rest
-are recorded so the reasoning survives.
+whose value changes as you move through the work.
+
+**Settled: C7, "who uses it".** The rest are kept so the reasoning survives and
+so a later change of mind starts from the alternatives rather than from
+scratch. See `STRUCTURE.md`.
 
 | # | Idea | The slot reads | Strength | Risk |
 |---|---|---|---|---|
@@ -85,7 +88,7 @@ are recorded so the reasoning survives.
 | C4 | **Built in free time** | `A weekend` → `Two evenings` | True, memorable, human | Frames serious work as a hobby |
 | C5 | **The stack** | `Rust · Raft` → `Python · FastMCP · SQL Server` | Instantly legible to an engineer; zero boasting; covers every item | A spec list, not an insight — the least distinctive |
 | C6 | **Time to answer** | `Hours → one click` → `A week → Monday 6am` → `Handwritten → real time` | Latency of insight *is* the product in data engineering. Shows transformation, not just substitution | Needs an honest before-figure for each; some are guesses |
-| C7 | **Who uses it** | `Plant managers and executives` → `Operators on the floor` → `Strangers on the Chrome Web Store` → `My roommates` | Proves the work is *real* — the hardest thing for a portfolio to prove. Covers work and side projects equally. Has an arc, and the last one is disarmingly honest | Could read as small if the framing is wrong |
+| **C7 ✓** | **Who uses it** *(chosen)* | `Plant managers and executives` → `Operators on the floor` → `Strangers on the Chrome Web Store` → `My roommates` | Proves the work is *real* — the hardest thing for a portfolio to prove. Covers work and side projects equally. Has an arc, and the last one is disarmingly honest | Could read as small if the framing is wrong |
 
 ---
 
