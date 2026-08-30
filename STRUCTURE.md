@@ -194,7 +194,7 @@ schematic beats a screenshot of a dashboard anyway.
 | MCP server | Schematic: a question in plain language → the tool layer (SQL execution · document generation · retrieval over equipment manuals) → the database → an answer, with the audit log drawn as a first-class output. The audit log is the detail that shows judgement, so it gets weight. | Drawn in code |
 | Pipelines | Schematic: ERP and machine sensors (PLC / OPC-UA) in, staging, dimensional models out, feeding reporting. | Drawn in code |
 | Titan | The dashboard, cropped hard. Best version is a **pair**: `3/3 online · leader #1`, then after killing node 1, `2/3 online · leader #2`. Two states, one story, no video needed. | Owner recaptures |
-| MenuWeek | **Done.** Four real screens - tonight's plan, the week, the grocery list, the recipe book - in CSS-drawn phone frames. | Supplied |
+| MenuWeek | **Done.** Four real screens, status bars removed, - tonight's plan, the week, the grocery list, the recipe book - in CSS-drawn phone frames. | Supplied |
 
 ### Recapturing Titan
 
