@@ -146,6 +146,11 @@ screenshots supply every bit of colour on the page. That is the mechanism, not
 a preference. The MenuWeek screens are the first real proof of it: four warm
 orange interfaces against all that white, and the page changes character.
 
+**The mark.** Several streams merging into one, at `public/favicon.svg`. Three
+strokes, not five: five looked better large and turned to mush at 16px, which
+is the size a favicon is actually seen at. Tested at 16, 20, 32 and 64 before
+choosing. It inverts for a dark browser chrome.
+
 **Device frames are drawn, not photographed.** A rounded body, an inset screen
 and the pill in the status bar, built from the screenshots' own proportions
 (1206x2622). No product render is copied. The body stays black in both themes
@@ -192,7 +197,7 @@ schematic beats a screenshot of a dashboard anyway.
 | Project | Artifact | Source |
 |---|---|---|
 | MCP server | Schematic: a question in plain language → the tool layer (SQL execution · document generation · retrieval over equipment manuals) → the database → an answer, with the audit log drawn as a first-class output. The audit log is the detail that shows judgement, so it gets weight. | Drawn in code |
-| Pipelines | Schematic: ERP and machine sensors (PLC / OPC-UA) in, staging, dimensional models out, feeding reporting. | Drawn in code |
+| Pipelines | Schematic: three sources fan in, ingestion, a database cylinder for the dimensional models, then a fan-out to dashboards, reports, alerts and the MCP server. The fan-out is the point: it shows the projects are one system, not four unrelated items. | Drawn in code |
 | Titan | The dashboard, cropped hard. Best version is a **pair**: `3/3 online · leader #1`, then after killing node 1, `2/3 online · leader #2`. Two states, one story, no video needed. | Owner recaptures |
 | MenuWeek | **Done.** Four real screens, status bars removed, - tonight's plan, the week, the grocery list, the recipe book - in CSS-drawn phone frames. | Supplied |
 

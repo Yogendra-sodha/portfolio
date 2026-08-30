@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Many streams converging into one.
+       Three strokes, not five. Five looked better at 128px and turned to mush
+       at 16px, which is the size this is actually seen at nearly all the time.
+       Tested at 16, 20, 32 and 64 before choosing.
+       Inverts for a dark browser chrome. -->
+  <style>
+    .m { fill: none; stroke: #000; stroke-width: 3; stroke-linecap: round; }
+    @media (prefers-color-scheme: dark) { .m { stroke: #fff; } }
+  </style>
+  <g class="m">
+    <path d="M4 6 C13.3 6 13.3 16 19 16"/>
+    <path d="M4 16 H19"/>
+    <path d="M4 26 C13.3 26 13.3 16 19 16"/>
+    <path d="M19 16 H28.5"/>
+  </g>
+</svg>
