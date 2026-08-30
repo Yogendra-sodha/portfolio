@@ -30,6 +30,23 @@ Every decision on this site answers to that person. Not to designers on
 Dribbble, not to a framework's best-practice guide, not to my own interest in
 building something clever.
 
+### The industry is the setting, not the identity
+
+Settled by the owner, and it governs every line of copy: **he is a data
+engineer who currently works in manufacturing, not a manufacturing data
+person.** Plastics is the most recent job, not the career.
+
+This does *not* mean stripping the specifics out. Pulling data off physical
+machines over OPC-UA, modelling scrap and material lineage — that concreteness
+is what makes the work credible, and a reader in any industry sees *this person
+handles real, awkward data* rather than *this person only does plastics*. The
+transferability comes from how the work is framed, never from vagueness.
+
+So: the identity lines (the sentence under the name, the opening of the About,
+the audience lines) describe the shape of the engineering. The industry appears
+underneath as where it happened. Any line that would stop being true after a
+move to a different sector needs rewriting, not deleting.
+
 Three questions they must be able to answer, in this order:
 
 1. **Who is this and what do they do?** — inside 10 seconds, without scrolling.
