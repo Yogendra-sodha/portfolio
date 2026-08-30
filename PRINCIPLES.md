@@ -368,6 +368,52 @@ and "~15 production pipelines" and learns everything they needed to. Nothing on
 the site should be a number the owner could not calmly defend, or that a
 manager at the named employer would be unhappy to find on Google.
 
+### How the copy is written
+
+The design was settled before the code. The prose was not, and the first pass
+showed it: correct, complete, and forgettable. These rules are the fix, drawn
+from writers the owner named. They are house rules now, not a one-time edit.
+
+**Answer first (Minto).** Every block opens with its conclusion. "Kill the
+machine holding the database and the database keeps working." The mechanism is
+support, and support goes underneath. A reader who stops after one sentence
+should still have the point.
+
+**Describe behaviour, not machinery (Norman).** What does it do for the person
+in front of it? "Someone asks a question in plain English" is the work. The
+tool layer, the retrieval, the audit trail are how it is kept, and they come
+second.
+
+**Concrete over abstract (Heath).** No "leveraged", no "robust", no "end-to-
+end solution". Name the thing: a plain-English question, a database, an
+equipment manual, a Tuesday dinner. Abstraction is what makes a portfolio
+sound like every other portfolio.
+
+**Cut (Zinsser, Williams).** Every sentence is stripped to what it carries.
+Delete qualifiers, delete throat-clearing, delete any word whose removal
+changes nothing. Prefer the short word and the active verb. Williams's test:
+find the real action and make it the verb.
+
+**Write it the way it would be said (Graham).** If the owner would not say the
+sentence out loud to an engineer over coffee, it is wrong. That single test
+catches most of the failures the other rules describe.
+
+**Nobody reads (Krug, Nielsen Norman).** The reader scans. Front-load the
+first few words of every paragraph, keep blocks short, never bury the point
+mid-paragraph. Assume most of the page is skipped and make the skimmed
+version true on its own.
+
+**Meet the reader where they are (Schwartz).** A hiring manager arrives
+knowing nothing about the plant, the domain, or the tools. Start from what
+they already understand and move one step at a time. Never open with an
+internal noun.
+
+**Let the evidence sit next to the claim (Tufte).** The diagram or screenshot
+carries the proof; the words do not repeat it. No caption that restates the
+image, no sentence that describes what the reader is already looking at.
+
+The em dash rule below applies to all of it.
+
 ### House style
 
 **No em dashes or en dashes anywhere on the site.** Owner's preference, and it
