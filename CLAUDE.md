@@ -24,3 +24,14 @@ Short version, which is not a substitute for reading it:
 
 If a request conflicts with `PRINCIPLES.md`, say so and get the document
 changed first. Don't route around it silently.
+
+## Shipping
+
+**Standing instruction from the owner: open a pull request and merge it to
+`main` every time a change is finished.** No need to ask each time.
+
+- Work on the feature branch, push, open the PR, merge it.
+- `main` is the production branch: merging deploys to
+  https://datafromsodha.fyi via Cloudflare. Treat a merge as publishing.
+- Because of that, verify before merging rather than after. Run the checks in
+  `README.md` and confirm the page renders.
