@@ -46,6 +46,31 @@
   </div>
 </div>
 
+<!-- Marks where the header ends. The rails come on the moment this scrolls
+     past the top of the viewport, which is precise; watching the header itself
+     is not, because a tall header still counts as visible well into the first
+     project and would leave it with no audience line at all. -->
+<div id="headEnd" aria-hidden="true"></div>
+
+<!-- The rails. Decorative mirrors of content that already exists in the header
+     and the footer, so screen readers hear the name and the links once, not
+     three times. Links are taken out of the tab order for the same reason.
+     Only rendered on screens wide enough to have empty margins to park in. -->
+<div class="rails" aria-hidden="true">
+  <div class="rail rail-left">
+    <p class="rail-name">Yogendrasinh Sodha</p>
+    <p class="rail-slot">
+      <span class="rail-slot-label">Used by</span>
+      <span class="rail-slot-value" id="railSlotValue">analysts and managers where I work</span>
+    </p>
+  </div>
+  <div class="rail rail-right">
+    <a href="mailto:yuvisodha@gmail.com" tabindex="-1">Email</a>
+    <a href="https://github.com/Yogendra-sodha" tabindex="-1">GitHub</a>
+    <a href="https://www.linkedin.com/in/yogendrasinh-sodha/" tabindex="-1">LinkedIn</a>
+  </div>
+</div>
+
 <main id="work">
 
   <section class="project" data-who="analysts and managers where I work">

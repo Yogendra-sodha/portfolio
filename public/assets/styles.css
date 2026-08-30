@@ -352,3 +352,56 @@ footer p { margin: 0; }
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
 }
+
+/* ---------- the rails ----------
+   The name leaves the top, parks at the left edge, and holds still while the
+   work scrolls between it and the contacts on the right. Both evaporate at the
+   end of the page. Same idea as the reference site's fixed name and year, on a
+   vertical axis.
+
+   Only on screens with empty margins wide enough to park in. Below that the
+   layout is unchanged and the audience line stays in its bar at the top —
+   a rail that overlaps the reading column would be worse than no rail.        */
+
+.rails { display: none; }
+
+@media (min-width: 80rem) {
+
+  .has-rails .rails { display: block; }
+
+  /* The rail carries the audience line up there, so the bar is redundant. */
+  .has-rails .slot { display: none; }
+
+  .rail {
+    position: fixed;
+    top: 50%;
+    z-index: 4;
+    font-size: var(--s-meta);
+    line-height: 1.5;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .rail-left  { left:  clamp(1.5rem, 3.5vw, 3.5rem); transform: translateY(-50%) translateX(-0.75rem); }
+  .rail-right { right: clamp(1.5rem, 3.5vw, 3.5rem); transform: translateY(-50%) translateX(0.75rem);  text-align: right; }
+
+  /* Arrived: slid into place and holding. */
+  .rails.is-on .rail { opacity: 1; transform: translateY(-50%) translateX(0); }
+  .rails.is-on .rail-right { pointer-events: auto; }
+
+  .rail p { margin: 0; max-width: 11rem; }
+
+  .rail-name { font-weight: 600; }
+
+  .rail-slot { margin-top: 1.25rem !important; }
+  .rail-slot-label { display: block; color: var(--ink-muted); }
+  .rail-slot-value { display: block; transition: opacity 0.35s ease; }
+  .rail-slot-value.is-changing { opacity: 0; }
+
+  .rail-right a { display: block; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rail { transform: translateY(-50%) !important; }
+}

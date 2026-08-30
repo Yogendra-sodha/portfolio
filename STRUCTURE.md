@@ -52,7 +52,31 @@ nothing else.
 └─────────────────────────────────────────┘
 ```
 
-### The slot
+### The rails (wide screens)
+
+On screens at least 80rem wide there is room in the margins, and the page uses
+it the way the reference does: **the name leaves the top, parks at the left
+edge at the vertical middle, and holds still while the work scrolls past.** The
+contacts do the same on the right. Both fade out when the footer arrives.
+
+The audience line lives on the left rail directly under the name — name and
+changing value together, which is exactly the pairing the reference makes with
+its name and year. The sticky bar is hidden whenever the rails are showing;
+having both would state the same thing twice.
+
+- The rails are **decorative mirrors** of content that already exists in the
+  header and the footer. They are `aria-hidden` and their links are out of the
+  tab order, so a screen reader hears the name and the contacts once, not three
+  times. The real ones stay reachable at the top and the bottom.
+- They arrive when the header's end is **18% into the viewport**, not when it
+  has fully cleared. Waiting for it to clear leaves the first project on screen
+  with the bar already hidden and no rail yet — an unlabelled project, which is
+  the one thing this idea exists to prevent.
+- **Below 80rem there are no rails at all** and the layout is untouched: a rail
+  overlapping the reading column would be worse than no rail.
+- `prefers-reduced-motion` removes the travel; they simply appear.
+
+### The bar (narrow screens, and the fallback)
 
 A single sticky line below the header. As each project scrolls into view the
 value changes; the label `Used by:` never moves. Same mechanism as the year

@@ -9,6 +9,8 @@
 (function () {
   'use strict';
 
+  var rails = document.querySelector('.rails');
+  var railValue = document.getElementById('railSlotValue');
   var slot = document.querySelector('.slot');
   var value = document.getElementById('slotValue');
   var projects = Array.prototype.slice.call(
@@ -31,14 +33,20 @@
 
     if (reduced.matches) {
       value.textContent = who;
+      if (railValue) railValue.textContent = who;
       return;
     }
 
     window.clearTimeout(timer);
     value.classList.add('is-changing');
+    if (railValue) railValue.classList.add('is-changing');
     timer = window.setTimeout(function () {
       value.textContent = who;
       value.classList.remove('is-changing');
+      if (railValue) {
+        railValue.textContent = who;
+        railValue.classList.remove('is-changing');
+      }
     }, 180);
   }
 
@@ -76,4 +84,48 @@
   projects.forEach(function (p) { observer.observe(p); });
 
   set(projects[0].getAttribute('data-who'));
+
+  /* ---- the rails ----
+     The name travels out of the header to the left edge and holds there while
+     the work scrolls past; the contacts do the same on the right; both fade
+     out once the page ends. Wide screens only — below that there is no empty
+     margin to park in, and the layout is left alone. */
+
+  if (!rails) return;
+
+  var wide = window.matchMedia('(min-width: 80rem)');
+  var headEnd = document.getElementById('headEnd');
+  var tail = document.querySelector('footer');
+  if (!headEnd || !tail) return;
+
+  var headerGone = false;
+  var atEnd = false;
+
+  function apply() {
+    if (!wide.matches) { rails.classList.remove('is-on'); return; }
+    rails.classList.toggle('is-on', headerGone && !atEnd);
+  }
+
+  /* The rails arrive once the header's end is into the top of the viewport,
+     not once it has fully cleared it — otherwise the first project sits on
+     screen with no audience line while the bar is already hidden. */
+  new IntersectionObserver(function (es) {
+    var e = es[0];
+    headerGone = !e.isIntersecting &&
+                 e.boundingClientRect.top < window.innerHeight * 0.5;
+    apply();
+  }, { threshold: 0, rootMargin: '-18% 0px 0px 0px' }).observe(headEnd);
+
+  new IntersectionObserver(function (es) {
+    atEnd = es[0].isIntersecting;
+    apply();
+  }, { threshold: 0 }).observe(tail);
+
+  function sizeChanged() {
+    document.documentElement.classList.toggle('has-rails', wide.matches);
+    apply();
+  }
+  wide.addEventListener ? wide.addEventListener('change', sizeChanged)
+                        : wide.addListener(sizeChanged);
+  sizeChanged();
 }());
