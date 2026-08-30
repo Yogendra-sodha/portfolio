@@ -1,0 +1,15 @@
+{
+  // Cloudflare Workers static-assets config.
+  //
+  // Only ./public is uploaded. The design documents at the repository root —
+  // PRINCIPLES.md, CONTENT.md, STRUCTURE.md — are working notes and must not
+  // be served from the domain, which is why the site lives in its own folder.
+  //
+  // There is no "main" entry: this is an assets-only Worker, which Cloudflare
+  // supports. Nothing runs on a request; files are served from the edge.
+  "name": "portfolio",
+  "compatibility_date": "2026-08-30",
+  "assets": {
+    "directory": "./public"
+  }
+}
