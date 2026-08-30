@@ -14,6 +14,9 @@ Two rules are easy to break by accident:
   the page comes from the artifacts. The chrome stays monochrome so they carry it.
 - **Four type sizes only** — 40 / 24 / 18 / 15. Hierarchy is weight and opacity.
 - **No em dashes on the site** — plain hyphens only. See `PRINCIPLES.md` §4.
+- **The copy follows house writing rules** — answer first, behaviour not
+  machinery, concrete nouns, cut everything else. `PRINCIPLES.md` §4, *How the
+  copy is written*. New or edited prose is held to them.
 
 ## Run it
 
@@ -79,16 +82,16 @@ are placeholders and **must not survive to launch**.
 
 MenuWeek is done: four real screens in CSS-drawn phone frames.
 
-1. **Titan screenshot** — the dashboard cropped to the panel, no browser or
-   Windows chrome. Two captures, same crop: `3/3 online · leader #1`, then after
-   killing node 1, `2/3 online · leader #2`.
-2. **MenuWeek screenshot** — one real screen of it in use.
-3. **A photograph.**
-4. **The résumé.** Not linked yet, deliberately: the PDF prints
+1. **Titan screenshots** — the dashboard cropped to the panel, no browser or
+   Windows chrome. Three captures, same crop: `3/3 online · leader #1`, then
+   after killing node 1, `2/3 online · leader #2`, then node 1 back and
+   following. The recovery state is the one most demos leave out.
+2. **A photograph.**
+3. **The résumé.** Not linked yet, deliberately: the PDF prints
    `github.com/yogendrasinh-sodha`, which is a 404. The correct account is
    `github.com/Yogendra-sodha`. Fix the document, then add the link in the
    header where the comment marks the spot.
-5. **A domain**, custom or `github.io`.
+
 
 ## Checks worth re-running after a change
 

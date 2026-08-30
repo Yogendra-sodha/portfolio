@@ -16,7 +16,7 @@
 <meta property="og:title" content="Yogendrasinh Sodha - Data engineer">
 <meta property="og:description" content="I make messy operational data answer questions. Pipelines, dimensional models, and tools people actually open.">
 <link rel="stylesheet" href="assets/styles.css">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='system-ui'>Y</text></svg>">
 <script>document.documentElement.className = 'js';</script>
 </head>
 <body>
@@ -124,12 +124,12 @@
     </figure>
     <h2>Production analysis MCP server</h2>
     <p class="who">Used by analysts and managers where I work.</p>
-    <p>A FastMCP server over the production database, with a knowledge base built from the
-    bag-machine and extrusion manuals. SQL execution, document generation and retrieval are
-    exposed as separate tools, with schema introspection and audit logging, so a language model
-    can reach production data safely and every access leaves a record.</p>
-    <p>It replaced ad-hoc analysis requests. It is now the tool I reach for first rather than
-    the exception.</p>
+    <p>Someone asks a question in plain English. The answer comes back from the production
+    database, with the equipment manuals read alongside it.</p>
+    <p>Underneath, running SQL, generating a document and looking something up in a manual are
+    three separate tools rather than one. The model inspects the schema before it asks, so it
+    knows what exists, and every call it makes is written to an audit log.</p>
+    <p>Questions used to queue behind an analyst. Now it is the first thing I open.</p>
     <p class="stack">Python · FastMCP · SQL Server · RAG</p>
   </section>
 
@@ -193,27 +193,31 @@
     </figure>
     <h2>Pipelines and dimensional models</h2>
     <p class="who">Used by every report the business runs on.</p>
-    <p>Fact and dimension models in SQL Server, fed by around fifteen batch and streaming
-    pipelines across production, material and QC. Terabyte-scale ingestion from the ERP system
-    and from machine sensors, with acquisition taken straight off the hardware through PLCs and
-    Kepware over OPC-UA.</p>
+    <p>Every number the business reports comes through here.</p>
+    <p>Around fifteen pipelines, batch and streaming, pull from the ERP system and from the
+    machines themselves, reading sensors straight off the hardware over OPC-UA. Terabyte scale,
+    and no two sources agree on anything until they land.</p>
+    <p>What they land in is a set of fact and dimension tables. Everything downstream reads
+    those: the dashboards, the weekly report, the alerts, and the question-answering above.</p>
     <p class="stack">Python · PySpark · SQL Server · Kepware / OPC-UA</p>
   </section>
 
   <section class="project" data-who="anyone who pip installs it">
     <figure class="art">
       <div class="ph">
-        <p><strong>Screenshot to come:</strong> the Titan dashboard, cropped to the panel - once
-        showing <code>3/3 online · leader #1</code>, once after killing node 1 showing
-        <code>2/3 online · leader #2</code>.</p>
+        <p><strong>Screenshots to come:</strong> the dashboard in three states - all three nodes
+        up with node 1 leading, node 1 killed and node 2 elected in its place, then node 1 back
+        and following. The recovery is the half most demos leave out.</p>
       </div>
     </figure>
     <h2>Titan - distributed SQLite</h2>
     <p class="who">Used by anyone who <code>pip install</code>s it.</p>
-    <p>A distributed, highly available SQLite database written in Rust, with the Raft consensus
-    engine built from scratch: leader election, failover, replicated multi-table transactions,
-    an HTTP API and a Python client. A three-node cluster survives losing a node without losing
-    data.</p>
+    <p>Kill the machine holding the database and the database keeps working.</p>
+    <p>Three nodes agree on every write using Raft, which I implemented from scratch in Rust
+    rather than pulling in a library. When the leader dies the remaining two elect a new one and
+    writes carry on. When the old leader comes back it rejoins as a follower and catches up.</p>
+    <p>SQLite underneath, an HTTP API on top, a Python client, and <code>pip install
+    titan-db</code> to try it.</p>
     <p class="stack">Rust · Raft · SQLite · Tokio</p>
     <p class="links-inline">
       <a href="https://github.com/Yogendra-sodha/titan-distributed-sqlite">Source</a>
@@ -261,11 +265,11 @@
     </figure>
     <h2>MenuWeek</h2>
     <p class="who">Used by my roommates, every evening.</p>
-    <p>A dinner planner for a household. Five tabs: what is cooking tonight and the steps to
-    get there, a weekly menu you can generate or set by hand, a shopping list built from that
-    menu, a searchable recipe book, and a pantry.</p>
-    <p>Everyone in the house signs in to the same plan, so whoever is cooking sees the same
-    list. A React progressive web app, installable to a phone's home screen.</p>
+    <p>In a shared house, nobody knows what is for dinner or whose turn it is to cook.</p>
+    <p>Pick the week's menu and the shopping list builds itself from it. The prep and cooking
+    steps get ticked off as they happen, and the recipes stay searchable. Everyone signs in to
+    the same plan, so whoever walks into the kitchen sees the same list.</p>
+    <p>A React progressive web app, installable to a phone's home screen.</p>
     <p class="stack">React · Supabase · Vercel</p>
     <p class="links-inline">
       <a href="https://menuweek.vercel.app/">Live</a>
@@ -309,12 +313,12 @@
     <h2>About</h2>
     <div class="about-grid">
       <div>
-        <p>I'm a data engineer. The work has the same shape wherever I've done it: an ocean of
-        raw data in, something clean and usable out - pipelines, models, and tools people
-        actually open. Right now that's a manufacturer in New York, where the data comes off
-        physical machines; before that it was a data lake on AWS. Evenings, I build small things
-        that remove a bottleneck. Titan is Rust, a language I learned by building it. Badminton
-        is the love; pickleball and volleyball are what actually get played.</p>
+        <p>I'm a data engineer. The work has the same shape wherever I do it: raw data in,
+        something people can act on out.</p>
+        <p>Right now that is a manufacturer in New York, where the data comes off physical
+        machines. Before that, a data lake on AWS. Evenings I build small things that remove a
+        bottleneck; Titan is Rust, a language I learned by building it.</p>
+        <p>Badminton is the love. Pickleball and volleyball are what actually get played.</p>
         <ul class="links">
           <li><a href="mailto:yuvisodha@gmail.com">yuvisodha@gmail.com</a></li>
           <li><a href="https://github.com/Yogendra-sodha">GitHub</a></li>

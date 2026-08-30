@@ -146,10 +146,10 @@ screenshots supply every bit of colour on the page. That is the mechanism, not
 a preference. The MenuWeek screens are the first real proof of it: four warm
 orange interfaces against all that white, and the page changes character.
 
-**The mark.** Several streams merging into one, at `public/favicon.svg`. Three
-strokes, not five: five looked better large and turned to mush at 16px, which
-is the size a favicon is actually seen at. Tested at 16, 20, 32 and 64 before
-choosing. It inverts for a dark browser chrome.
+**The favicon is the letter Y.** A converging-streams mark was tried and
+reverted: it read as a graphic device competing with the screenshots rather
+than a quiet label, which is the opposite of what page chrome should do. A
+letter is duller and better.
 
 **Device frames are drawn, not photographed.** A rounded body, an inset screen
 and the pill in the status bar, built from the screenshots' own proportions
@@ -198,7 +198,7 @@ schematic beats a screenshot of a dashboard anyway.
 |---|---|---|
 | MCP server | Schematic: a question in plain language → the tool layer (SQL execution · document generation · retrieval over equipment manuals) → the database → an answer, with the audit log drawn as a first-class output. The audit log is the detail that shows judgement, so it gets weight. | Drawn in code |
 | Pipelines | Schematic: three sources fan in, ingestion, a database cylinder for the dimensional models, then a fan-out to dashboards, reports, alerts and the MCP server. The fan-out is the point: it shows the projects are one system, not four unrelated items. | Drawn in code |
-| Titan | The dashboard, cropped hard. Best version is a **pair**: `3/3 online · leader #1`, then after killing node 1, `2/3 online · leader #2`. Two states, one story, no video needed. | Owner recaptures |
+| Titan | The dashboard, cropped hard. **Three states**: `3/3 online · leader #1`; after killing node 1, `2/3 online · leader #2`; then node 1 back and following, `3/3 online · leader #2`. Failure and recovery, no video needed. | Owner recaptures |
 | MenuWeek | **Done.** Four real screens, status bars removed, - tonight's plan, the week, the grocery list, the recipe book - in CSS-drawn phone frames. | Supplied |
 
 ### Recapturing Titan
@@ -209,8 +209,9 @@ everything that is not the product:
 - **Crop to the Titan panel only** — no browser chrome, no address bar, no
   bookmarks, no "Ask Gemini" button, no "New Chrome available" banner, no
   Windows title bars.
-- **Two captures, same crop**: before and after killing the leader. Side by side
-  they prove failover; either one alone proves nothing.
+- **Three captures, same crop**: healthy, leader killed, old leader rejoined as
+  a follower. Side by side they prove failover and recovery; any one alone
+  proves nothing.
 - The terminals are optional. If they are included, one is enough, and it should
   show the election, not the cargo build warnings.
 - Its palette — near-black terminal, near-white dashboard, a green status dot —
