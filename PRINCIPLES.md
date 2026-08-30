@@ -418,8 +418,9 @@ than small. So:
 
 - **Static site. No backend, no database, no server-side runtime.** Content
   lives in the repository.
-- **Free static hosting on Vercel**, deployed by pushing. No deploy pipeline to
-  babysit. Vercel also offers a Postgres and a Supabase integration: **we do not
+- **Free static hosting on Cloudflare Pages**, at `datafromsodha.fyi`, deployed
+  by pushing. No deploy pipeline to babysit. The domain is registered with the
+  same provider, so there is one dashboard rather than two. Vercel also offers a Postgres and a Supabase integration: **we do not
   use them.** A site that collects nothing has nothing to store, and an unused
   database is a password to rotate and a free tier to outlive. If a future
   feature seems to need one, that is the signal to question the feature.

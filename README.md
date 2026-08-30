@@ -39,13 +39,29 @@ nothing is lost.
 
 ## Deploy
 
-**Vercel**, free tier, from the repository root. It is a static site, so there
-is nothing to configure: import the repo, accept the defaults (no framework, no
-build command, output = root) and every push deploys.
+**Cloudflare Pages**, free plan, from the repository root.
 
-No database. Vercel will offer you Postgres and Supabase — the site collects
-nothing, so it has nothing to store, and an unused database is just a password
-to rotate. See `PRINCIPLES.md` §5.
+The domain `datafromsodha.fyi` is registered with Cloudflare, so DNS is handled
+inside the same account — no records to copy between two dashboards, which is
+where this step usually goes wrong.
+
+1. Push to `main`.
+2. Cloudflare dashboard → **Workers & Pages** → Create → **Pages** → Connect to
+   Git → authorise GitHub → pick `yogendra-sodha/portfolio`.
+3. Build settings: framework preset **None**, build command **empty**, output
+   directory **`/`**. It is plain static files; there is nothing to build.
+4. Deploy. You get a `*.pages.dev` URL immediately.
+5. **Custom domains** → add `datafromsodha.fyi` and `www.datafromsodha.fyi`.
+   Cloudflare creates the DNS records itself because the domain is on the same
+   account.
+6. Make the apex canonical and redirect `www` to it with a Redirect Rule.
+
+Free plan headroom, from Cloudflare's published limits: unlimited bandwidth and
+requests, 500 builds/month, 100 custom domains, 20,000 files, 25 MiB per file.
+This site is three files and about 150 KB.
+
+No database. See `PRINCIPLES.md` §5 — the site collects nothing, so it has
+nothing to store.
 
 ## Still outstanding
 
