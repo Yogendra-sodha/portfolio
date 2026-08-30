@@ -143,7 +143,14 @@ three tokens.
 
 **Colour comes only from the artifacts.** The chrome stays monochrome so the
 screenshots supply every bit of colour on the page. That is the mechanism, not
-a preference.
+a preference. The MenuWeek screens are the first real proof of it: four warm
+orange interfaces against all that white, and the page changes character.
+
+**Device frames are drawn, not photographed.** A rounded body, an inset screen
+and the pill in the status bar, built from the screenshots' own proportions
+(1206x2622). No product render is copied. The body stays black in both themes
+because it is part of the artifact, the object the work runs on, rather than
+page chrome, so it does not follow the ink token and does not invert.
 
 **Type — four sizes, no more** (Ngo's economy measure is `1 / number of sizes`):
 
@@ -187,7 +194,7 @@ schematic beats a screenshot of a dashboard anyway.
 | MCP server | Schematic: a question in plain language → the tool layer (SQL execution · document generation · retrieval over equipment manuals) → the database → an answer, with the audit log drawn as a first-class output. The audit log is the detail that shows judgement, so it gets weight. | Drawn in code |
 | Pipelines | Schematic: ERP and machine sensors (PLC / OPC-UA) in, staging, dimensional models out, feeding reporting. | Drawn in code |
 | Titan | The dashboard, cropped hard. Best version is a **pair**: `3/3 online · leader #1`, then after killing node 1, `2/3 online · leader #2`. Two states, one story, no video needed. | Owner recaptures |
-| MenuWeek | One real screen of the app in use. | Owner captures |
+| MenuWeek | **Done.** Four real screens - tonight's plan, the week, the grocery list, the recipe book - in CSS-drawn phone frames. | Supplied |
 
 ### Recapturing Titan
 

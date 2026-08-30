@@ -13,6 +13,7 @@ Two rules are easy to break by accident:
 - **Three colour values only** — ink, ink at 55%, paper. Every bit of colour on
   the page comes from the artifacts. The chrome stays monochrome so they carry it.
 - **Four type sizes only** — 40 / 24 / 18 / 15. Hierarchy is weight and opacity.
+- **No em dashes on the site** — plain hyphens only. See `PRINCIPLES.md` §4.
 
 ## Run it
 
@@ -30,7 +31,7 @@ wrangler.jsonc                       deploy config — publishes ./public only
 public/index.html                    the whole page
 public/assets/styles.css             the visual system
 public/assets/slot.js                the one idea — the sticky "Used by" line
-public/assets/fonts/archivo-*.woff2  the typeface, self-hosted
+public/assets/fonts/figtree-*.woff2   the typeface, self-hosted
 public/assets/fonts/OFL.txt          its licence — keep it with the files
 ```
 
@@ -73,8 +74,10 @@ nothing to store.
 
 ## Still outstanding
 
-The page is honest about what it does not have yet — the two dashed boxes and
-the portrait frame are placeholders and **must not survive to launch**.
+The page is honest about what it does not have yet. The remaining dashed boxes
+are placeholders and **must not survive to launch**.
+
+MenuWeek is done: four real screens in CSS-drawn phone frames.
 
 1. **Titan screenshot** — the dashboard cropped to the panel, no browser or
    Windows chrome. Two captures, same crop: `3/3 online · leader #1`, then after

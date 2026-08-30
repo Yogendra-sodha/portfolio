@@ -4,7 +4,7 @@
 
    Deliberately small and dependency-free. If this file fails to load, every
    project still states who uses it in its own markup (see .who in styles.css)
-   and the page reads correctly — the continuity is the only thing lost. */
+   and the page reads correctly - the continuity is the only thing lost. */
 
 (function () {
   'use strict';
@@ -13,8 +13,9 @@
   var railValue = document.getElementById('railSlotValue');
   var slot = document.querySelector('.slot');
   var value = document.getElementById('slotValue');
+  var labels = document.querySelectorAll('.slot-label, .rail-slot-label');
   var projects = Array.prototype.slice.call(
-    document.querySelectorAll('.project[data-who]')
+    document.querySelectorAll('[data-who]')
   );
 
   if (!slot || !value || !projects.length || !('IntersectionObserver' in window)) {
@@ -26,6 +27,13 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   var current = '';
   var timer = null;
+
+  function setLabel(el) {
+    /* "Used by" is wrong for a section nobody uses. Sections may name their
+       own label; everything else keeps the default. */
+    var text = (el && el.getAttribute('data-label')) || 'Used by';
+    for (var i = 0; i < labels.length; i++) labels[i].textContent = text;
+  }
 
   function set(who) {
     if (!who || who === current) return;
@@ -70,9 +78,10 @@
 
     if (best) {
       slot.classList.remove('is-idle');
+      setLabel(best);
       set(best.getAttribute('data-who'));
     } else {
-      /* Scrolled above the work or past it — say nothing rather than leaving
+      /* Scrolled above the work or past it - say nothing rather than leaving
          the last project's audience sitting there, which would be untrue. */
       slot.classList.add('is-idle');
     }
@@ -88,14 +97,14 @@
   /* ---- the rails ----
      The name travels out of the header to the left edge and holds there while
      the work scrolls past; the contacts do the same on the right; both fade
-     out once the page ends. Wide screens only — below that there is no empty
+     out once the page ends. Wide screens only - below that there is no empty
      margin to park in, and the layout is left alone. */
 
   if (!rails) return;
 
   var wide = window.matchMedia('(min-width: 80rem)');
   var headEnd = document.getElementById('headEnd');
-  var tail = document.querySelector('footer');
+  var tail = document.querySelector('.about');
   if (!headEnd || !tail) return;
 
   var headerGone = false;
@@ -107,7 +116,7 @@
   }
 
   /* The rails arrive once the header's end is into the top of the viewport,
-     not once it has fully cleared it — otherwise the first project sits on
+     not once it has fully cleared it - otherwise the first project sits on
      screen with no audience line while the bar is already hidden. */
   new IntersectionObserver(function (es) {
     var e = es[0];

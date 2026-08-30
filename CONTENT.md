@@ -73,7 +73,11 @@ Things to fix or supply before the site is built.
    engineering reader arguably better than a screenshot of a dashboard.
 5. ~~Which projects make the cut?~~ **Resolved** — see §6, revised once the
    no-screenshot constraint was known.
-6. **Titan needs a cleaner capture.** The owner supplied a four-window desktop
+6. **MenuWeek is captured.** Four screens supplied and on the page. A media
+   player strip naming a podcast sat above the status bar on one of them and
+   was painted out before publishing; it was not part of the app and it leaked
+   what the owner was listening to.
+7. **Titan needs a cleaner capture.** The owner supplied a four-window desktop
    screenshot (dashboard at `127.0.0.1:8001` showing `3/3 online · leader #1`,
    term 174, plus three PowerShell nodes). The content is right; the framing is
    not — browser chrome, Windows chrome, an "Ask Gemini" button and an update

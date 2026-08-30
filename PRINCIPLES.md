@@ -368,6 +368,17 @@ and "~15 production pipelines" and learns everything they needed to. Nothing on
 the site should be a number the owner could not calmly defend, or that a
 manager at the named employer would be unhappy to find on Google.
 
+### House style
+
+**No em dashes or en dashes anywhere on the site.** Owner's preference, and it
+is not negotiable by a later editor who thinks a sentence needs one. Use a
+plain hyphen with spaces around it, or restructure the sentence, or use a
+comma. This applies to the page copy, to the diagram labels, and to the
+comments in the shipped files, since anyone can read those with view-source.
+
+The working documents in the repository root are notes rather than the site,
+so they are exempt.
+
 ### Employer and client data
 
 This is a personal bio site and, as it stands, no work data belongs on it. The
@@ -433,8 +444,8 @@ than small. So:
   serve a page of text has not justified it.
 - **One exception, taken deliberately: the typeface.** The system font stack
   costs nothing and looks like nothing, and on a page this bare the face is
-  carrying most of the personality. Archivo is self-hosted from this repository
-  under the SIL Open Font License — two files, about 67KB, no third party
+  carrying most of the personality. Figtree is self-hosted from this repository
+  under the SIL Open Font License — two files, about 30KB, no third party
   contacted, no licence to renew. Hosted fonts (Google Fonts and the rest) are
   still refused: they would make every visitor's browser talk to someone else,
   which breaks §4.
