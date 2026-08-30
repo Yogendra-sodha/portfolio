@@ -4,8 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Yogendrasinh Sodha — Data engineer</title>
-<meta name="description" content="Data engineer. I make messy operational data answer questions. Pipelines, dimensional models, and tools people across a manufacturing plant use every day.">
+<meta name="description" content="Data engineer. I make messy operational data answer questions. Pipelines, dimensional models, and tools people actually open.">
 <meta name="author" content="Yogendrasinh Sodha">
+<link rel="canonical" href="https://datafromsodha.fyi/">
+
+<!-- Link preview, for when this gets pasted into LinkedIn or a message.
+     og:image is deliberately absent: there is no image worth previewing until
+     the real screenshots land. A broken image reference is worse than none. -->
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://datafromsodha.fyi/">
+<meta property="og:title" content="Yogendrasinh Sodha — Data engineer">
+<meta property="og:description" content="I make messy operational data answer questions. Pipelines, dimensional models, and tools people actually open.">
 <link rel="stylesheet" href="assets/styles.css">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='system-ui'>Y</text></svg>">
 <script>document.documentElement.className = 'js';</script>
@@ -33,13 +42,13 @@
 <div class="slot" aria-hidden="true" hidden>
   <div class="slot-inner">
     <span class="slot-label">Used by</span>
-    <span class="slot-value" id="slotValue">the plant's analysts and managers</span>
+    <span class="slot-value" id="slotValue">analysts and managers where I work</span>
   </div>
 </div>
 
 <main id="work">
 
-  <section class="project" data-who="the plant's analysts and managers">
+  <section class="project" data-who="analysts and managers where I work">
     <figure class="art">
       <div class="dia-wrap">
       <svg viewBox="0 0 860 300" role="img" aria-labelledby="mcpT mcpD" class="dia">
@@ -89,7 +98,7 @@
       <figcaption>Schematic. The tools are separate on purpose, and every call is logged.</figcaption>
     </figure>
     <h2>Production analysis MCP server</h2>
-    <p class="who">Used by the plant's analysts and managers.</p>
+    <p class="who">Used by analysts and managers where I work.</p>
     <p>A FastMCP server over the production database, with a knowledge base built from the
     bag-machine and extrusion manuals. SQL execution, document generation and retrieval are
     exposed as separate tools, with schema introspection and audit logging, so a language model
@@ -99,7 +108,7 @@
     <p class="stack">Python · FastMCP · SQL Server · RAG</p>
   </section>
 
-  <section class="project" data-who="the plant's reporting, end to end">
+  <section class="project" data-who="every report the business runs on">
     <figure class="art">
       <div class="dia-wrap">
       <svg viewBox="0 0 860 240" role="img" aria-labelledby="pipeT pipeD" class="dia">
@@ -142,7 +151,7 @@
       <figcaption>Schematic. Around fifteen pipelines feed these models.</figcaption>
     </figure>
     <h2>Pipelines and dimensional models</h2>
-    <p class="who">Used by the plant's reporting, end to end.</p>
+    <p class="who">Used by every report the business runs on.</p>
     <p>Fact and dimension models in SQL Server, fed by around fifteen batch and streaming
     pipelines across production, material and QC. Terabyte-scale ingestion from the ERP system
     and from machine sensors, with acquisition taken straight off the hardware through PLCs and
@@ -226,11 +235,12 @@
     <h2>About</h2>
     <div class="about-grid">
       <div>
-        <p>I'm a data engineer at a plastics manufacturer in New York. The work has one shape: an
-        ocean of raw production data in, something clean and usable out — pipelines, models and
-        the tools the plant runs on. Evenings, I build small things that remove a bottleneck.
-        Titan is Rust, a language I learned by building it. Badminton is the love; pickleball and
-        volleyball are what actually get played.</p>
+        <p>I'm a data engineer. The work has the same shape wherever I've done it: an ocean of
+        raw data in, something clean and usable out — pipelines, models, and tools people
+        actually open. Right now that's a manufacturer in New York, where the data comes off
+        physical machines; before that it was a data lake on AWS. Evenings, I build small things
+        that remove a bottleneck. Titan is Rust, a language I learned by building it. Badminton
+        is the love; pickleball and volleyball are what actually get played.</p>
         <ul class="links">
           <li><a href="mailto:yuvisodha@gmail.com">yuvisodha@gmail.com</a></li>
           <li><a href="https://github.com/Yogendra-sodha">GitHub</a></li>

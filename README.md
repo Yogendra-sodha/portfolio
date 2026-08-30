@@ -19,19 +19,23 @@ Two rules are easy to break by accident:
 No build step, no dependencies.
 
 ```sh
-python3 -m http.server 8000
+cd public && python3 -m http.server 8000
 # then open http://127.0.0.1:8000
 ```
 
 ## Files
 
 ```
-index.html                    the whole page
-assets/styles.css             the visual system
-assets/slot.js                the one idea — the sticky "Used by" line
-assets/fonts/archivo-*.woff2  the typeface, self-hosted
-assets/fonts/OFL.txt          its licence — keep it with the files
+wrangler.jsonc                       deploy config — publishes ./public only
+public/index.html                    the whole page
+public/assets/styles.css             the visual system
+public/assets/slot.js                the one idea — the sticky "Used by" line
+public/assets/fonts/archivo-*.woff2  the typeface, self-hosted
+public/assets/fonts/OFL.txt          its licence — keep it with the files
 ```
+
+**Everything published lives in `public/`.** The design documents at the root
+are working notes and are deliberately not served from the domain.
 
 `assets/slot.js` is progressive enhancement. With JavaScript off the sticky
 line is not rendered at all and each project shows its own audience inline, so
@@ -39,13 +43,33 @@ nothing is lost.
 
 ## Deploy
 
-**Vercel**, free tier, from the repository root. It is a static site, so there
-is nothing to configure: import the repo, accept the defaults (no framework, no
-build command, output = root) and every push deploys.
+**Cloudflare Pages**, free plan, from the repository root.
 
-No database. Vercel will offer you Postgres and Supabase — the site collects
-nothing, so it has nothing to store, and an unused database is just a password
-to rotate. See `PRINCIPLES.md` §5.
+The domain `datafromsodha.fyi` is registered with Cloudflare, so DNS is handled
+inside the same account — no records to copy between two dashboards, which is
+where this step usually goes wrong.
+
+1. Push to `main`.
+2. Cloudflare dashboard → **Workers & Pages** → Create → **Pages** → Connect to
+   Git → authorise GitHub → pick `yogendra-sodha/portfolio`.
+3. Build settings — Cloudflare's Git flow now creates a **Worker**, not a Pages
+   project, so it asks for commands rather than an output directory:
+   - **Build command:** leave empty. There is nothing to build.
+   - **Deploy command:** `npx wrangler deploy`
+   `wrangler.jsonc` supplies the rest: it publishes `./public` as an
+   assets-only Worker with no script, so nothing runs on a request.
+4. Deploy. You get a `*.pages.dev` URL immediately.
+5. **Custom domains** → add `datafromsodha.fyi` and `www.datafromsodha.fyi`.
+   Cloudflare creates the DNS records itself because the domain is on the same
+   account.
+6. Make the apex canonical and redirect `www` to it with a Redirect Rule.
+
+Free plan headroom, from Cloudflare's published limits: unlimited bandwidth and
+requests, 500 builds/month, 100 custom domains, 20,000 files, 25 MiB per file.
+This site is three files and about 150 KB.
+
+No database. See `PRINCIPLES.md` §5 — the site collects nothing, so it has
+nothing to store.
 
 ## Still outstanding
 
