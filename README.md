@@ -30,7 +30,7 @@ wrangler.jsonc                       deploy config — publishes ./public only
 public/index.html                    the whole page
 public/assets/styles.css             the visual system
 public/assets/slot.js                the one idea — the sticky "Used by" line
-public/assets/fonts/archivo-*.woff2  the typeface, self-hosted
+public/assets/fonts/figtree-*.woff2   the typeface, self-hosted
 public/assets/fonts/OFL.txt          its licence — keep it with the files
 ```
 

@@ -13,8 +13,9 @@
   var railValue = document.getElementById('railSlotValue');
   var slot = document.querySelector('.slot');
   var value = document.getElementById('slotValue');
+  var labels = document.querySelectorAll('.slot-label, .rail-slot-label');
   var projects = Array.prototype.slice.call(
-    document.querySelectorAll('.project[data-who]')
+    document.querySelectorAll('[data-who]')
   );
 
   if (!slot || !value || !projects.length || !('IntersectionObserver' in window)) {
@@ -26,6 +27,13 @@
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   var current = '';
   var timer = null;
+
+  function setLabel(el) {
+    /* "Used by" is wrong for a section nobody uses. Sections may name their
+       own label; everything else keeps the default. */
+    var text = (el && el.getAttribute('data-label')) || 'Used by';
+    for (var i = 0; i < labels.length; i++) labels[i].textContent = text;
+  }
 
   function set(who) {
     if (!who || who === current) return;
@@ -70,6 +78,7 @@
 
     if (best) {
       slot.classList.remove('is-idle');
+      setLabel(best);
       set(best.getAttribute('data-who'));
     } else {
       /* Scrolled above the work or past it — say nothing rather than leaving
@@ -95,7 +104,7 @@
 
   var wide = window.matchMedia('(min-width: 80rem)');
   var headEnd = document.getElementById('headEnd');
-  var tail = document.querySelector('footer');
+  var tail = document.querySelector('.about');
   if (!headEnd || !tail) return;
 
   var headerGone = false;

@@ -433,8 +433,8 @@ than small. So:
   serve a page of text has not justified it.
 - **One exception, taken deliberately: the typeface.** The system font stack
   costs nothing and looks like nothing, and on a page this bare the face is
-  carrying most of the personality. Archivo is self-hosted from this repository
-  under the SIL Open Font License — two files, about 67KB, no third party
+  carrying most of the personality. Figtree is self-hosted from this repository
+  under the SIL Open Font License — two files, about 30KB, no third party
   contacted, no licence to renew. Hosted fonts (Google Fonts and the rest) are
   still refused: they would make every visitor's browser talk to someone else,
   which breaks §4.
