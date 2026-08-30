@@ -1,11 +1,11 @@
-/* Yogendrasinh Sodha — portfolio
+/* Yogendrasinh Sodha - portfolio
    Built against PRINCIPLES.md and STRUCTURE.md. Read those before changing
    anything here. The two rules most easily broken by accident:
 
    1. THREE VALUES ONLY. Ink, ink at 55%, paper. No fourth colour, no borders
       in a new grey, no tinted backgrounds. All colour on the page comes from
-      the artifacts (screenshots) — the chrome stays monochrome so they carry it.
-   2. FOUR TYPE SIZES ONLY — 40 / 24 / 18 / 15. Hierarchy is weight and
+      the artifacts (screenshots) - the chrome stays monochrome so they carry it.
+   2. FOUR TYPE SIZES ONLY - 40 / 24 / 18 / 15. Hierarchy is weight and
       opacity, not size. (Ngo's economy measure is 1 / number of sizes. Adding
       a fifth costs real points and buys almost nothing.) Labels inside the
       diagrams are exempt: they live in the SVG's own scaled coordinate system,
@@ -21,12 +21,12 @@
    the quality that made Lab Grotesque feel smooth rather than technical.
    SIL Open Font License, self-hosted from this repository, so nothing is
    requested from a third party and the privacy rule in PRINCIPLES.md §4
-   holds. One variable file per subset covers 300–600, and it is half the
+   holds. One variable file per subset covers 300-600, and it is half the
    weight of the files it replaced.
    Licence: assets/fonts/OFL.txt. Keep it alongside the files.
 
    Weight does the softening, not colour. The reference sets body text in pure
-   black at weight 100 — it reads light because it IS light, not because it is
+   black at weight 100 - it reads light because it IS light, not because it is
    grey. We cannot go to 100 here, but running text sits at 350 rather than
    400 for the same reason.                                                   */
 
@@ -56,15 +56,15 @@
 
 :root {
   --ink: #000;
-  --ink-muted: rgba(0, 0, 0, 0.55);   /* 4.74:1 on paper — AA */
+  --ink-muted: rgba(0, 0, 0, 0.55);   /* 4.74:1 on paper - AA */
   --paper: #fff;
 
-  --s-name: clamp(2rem, 6vw, 2.5rem); /* 32–40px */
+  --s-name: clamp(2rem, 6vw, 2.5rem); /* 32-40px */
   --s-head: 1.5rem;                   /* 24px */
   --s-body: 1.125rem;                 /* 18px */
   --s-meta: 0.9375rem;                /* 15px */
 
-  --measure: 34rem;                   /* ~66 characters — reading width */
+  --measure: 34rem;                   /* ~66 characters - reading width */
   --page: 60rem;                      /* the band the work is allowed to fill */
   --gap: clamp(6rem, 20vh, 11rem);    /* one project should own the screen */
 }
@@ -72,7 +72,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --ink: #fff;
-    --ink-muted: rgba(255, 255, 255, 0.55); /* 6.3:1 on black — AA */
+    --ink-muted: rgba(255, 255, 255, 0.55); /* 6.3:1 on black - AA */
     --paper: #000;
   }
 }
@@ -157,7 +157,7 @@ h1 {
 
 /* ---------- the one idea ----------
    A single sticky line. One fixed position, one changing value.
-   Hidden entirely when JavaScript is off — each project carries its own line
+   Hidden entirely when JavaScript is off - each project carries its own line
    in the markup instead, so nothing is lost. */
 
 .slot {
@@ -245,7 +245,7 @@ code {
 
 /* Wide diagrams scroll inside their own box; the page never scrolls sideways.
    The caption sits outside the scroller so it stays put. The right-edge fade
-   is the affordance that says "there is more" — it paints in --paper, so it
+   is the affordance that says "there is more" - it paints in --paper, so it
    introduces no fourth colour. */
 .dia-wrap {
   overflow-x: auto;
@@ -301,7 +301,7 @@ code {
 }
 .dia-g .dash { stroke-dasharray: 4 4; }
 
-/* Placeholders — deliberately unfinished-looking. These must not survive to
+/* Placeholders - deliberately unfinished-looking. These must not survive to
    launch; if one is still here, the page is not done. */
 .ph {
   border: 1px dashed var(--ink-muted);
@@ -372,7 +372,7 @@ code {
    vertical axis.
 
    Only on screens with empty margins wide enough to park in. Below that the
-   layout is unchanged and the audience line stays in its bar at the top —
+   layout is unchanged and the audience line stays in its bar at the top -
    a rail that overlaps the reading column would be worse than no rail.        */
 
 .rails { display: none; }

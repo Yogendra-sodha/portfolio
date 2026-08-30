@@ -4,7 +4,7 @@
 
    Deliberately small and dependency-free. If this file fails to load, every
    project still states who uses it in its own markup (see .who in styles.css)
-   and the page reads correctly — the continuity is the only thing lost. */
+   and the page reads correctly - the continuity is the only thing lost. */
 
 (function () {
   'use strict';
@@ -81,7 +81,7 @@
       setLabel(best);
       set(best.getAttribute('data-who'));
     } else {
-      /* Scrolled above the work or past it — say nothing rather than leaving
+      /* Scrolled above the work or past it - say nothing rather than leaving
          the last project's audience sitting there, which would be untrue. */
       slot.classList.add('is-idle');
     }
@@ -97,7 +97,7 @@
   /* ---- the rails ----
      The name travels out of the header to the left edge and holds there while
      the work scrolls past; the contacts do the same on the right; both fade
-     out once the page ends. Wide screens only — below that there is no empty
+     out once the page ends. Wide screens only - below that there is no empty
      margin to park in, and the layout is left alone. */
 
   if (!rails) return;
@@ -116,7 +116,7 @@
   }
 
   /* The rails arrive once the header's end is into the top of the viewport,
-     not once it has fully cleared it — otherwise the first project sits on
+     not once it has fully cleared it - otherwise the first project sits on
      screen with no audience line while the bar is already hidden. */
   new IntersectionObserver(function (es) {
     var e = es[0];

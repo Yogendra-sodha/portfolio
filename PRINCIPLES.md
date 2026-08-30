@@ -368,6 +368,17 @@ and "~15 production pipelines" and learns everything they needed to. Nothing on
 the site should be a number the owner could not calmly defend, or that a
 manager at the named employer would be unhappy to find on Google.
 
+### House style
+
+**No em dashes or en dashes anywhere on the site.** Owner's preference, and it
+is not negotiable by a later editor who thinks a sentence needs one. Use a
+plain hyphen with spaces around it, or restructure the sentence, or use a
+comma. This applies to the page copy, to the diagram labels, and to the
+comments in the shipped files, since anyone can read those with view-source.
+
+The working documents in the repository root are notes rather than the site,
+so they are exempt.
+
 ### Employer and client data
 
 This is a personal bio site and, as it stands, no work data belongs on it. The

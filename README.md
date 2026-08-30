@@ -13,6 +13,7 @@ Two rules are easy to break by accident:
 - **Three colour values only** — ink, ink at 55%, paper. Every bit of colour on
   the page comes from the artifacts. The chrome stays monochrome so they carry it.
 - **Four type sizes only** — 40 / 24 / 18 / 15. Hierarchy is weight and opacity.
+- **No em dashes on the site** — plain hyphens only. See `PRINCIPLES.md` §4.
 
 ## Run it
 
