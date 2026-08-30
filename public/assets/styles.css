@@ -417,3 +417,57 @@ code {
 @media (prefers-reduced-motion: reduce) {
   .rail { transform: translateY(-50%) !important; }
 }
+
+/* ---------- device frames ----------
+   A phone drawn in CSS, not a picture of one: a rounded body, an inset screen,
+   and the pill cut out of the status bar. The screenshots already leave that
+   gap in the middle of the status bar, so the pill lands where the hardware
+   would be. Proportions come from the screenshots themselves, which are
+   1206x2622 at the native resolution.
+
+   The body is black in both themes on purpose. It is part of the artifact, the
+   object the work runs on, not page chrome - so it does not follow the ink
+   token and does not invert.                                                 */
+
+.devices {
+  display: flex;
+  gap: clamp(0.7rem, 2vw, 1.4rem);
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.device {
+  /* Capped so all four sit inside the band on a desktop rather than the last
+     one being clipped. Below 60rem the row scrolls, which is fine. */
+  --w: clamp(140px, 19vw, 195px);
+  flex: 0 0 auto;
+  width: var(--w);
+  padding: calc(var(--w) * 0.018);
+  border-radius: calc(var(--w) * 0.155);
+  background: #000;
+}
+
+.device-screen {
+  position: relative;
+  aspect-ratio: 1206 / 2622;
+  border-radius: calc(var(--w) * 0.14);
+  overflow: hidden;
+}
+
+.device-screen img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.device-island {
+  position: absolute;
+  top: 1.3%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 31%;
+  aspect-ratio: 375 / 111;
+  border-radius: 999px;
+  background: #000;
+}

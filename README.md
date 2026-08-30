@@ -74,8 +74,10 @@ nothing to store.
 
 ## Still outstanding
 
-The page is honest about what it does not have yet — the two dashed boxes and
-the portrait frame are placeholders and **must not survive to launch**.
+The page is honest about what it does not have yet. The remaining dashed boxes
+are placeholders and **must not survive to launch**.
+
+MenuWeek is done: four real screens in CSS-drawn phone frames.
 
 1. **Titan screenshot** — the dashboard cropped to the panel, no browser or
    Windows chrome. Two captures, same crop: `3/3 online · leader #1`, then after
