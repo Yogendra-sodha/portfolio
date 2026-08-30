@@ -1,0 +1,354 @@
+/* Yogendrasinh Sodha — portfolio
+   Built against PRINCIPLES.md and STRUCTURE.md. Read those before changing
+   anything here. The two rules most easily broken by accident:
+
+   1. THREE VALUES ONLY. Ink, ink at 55%, paper. No fourth colour, no borders
+      in a new grey, no tinted backgrounds. All colour on the page comes from
+      the artifacts (screenshots) — the chrome stays monochrome so they carry it.
+   2. FOUR TYPE SIZES ONLY — 40 / 24 / 18 / 15. Hierarchy is weight and
+      opacity, not size. (Ngo's economy measure is 1 / number of sizes. Adding
+      a fifth costs real points and buys almost nothing.) Labels inside the
+      diagrams are exempt: they live in the SVG's own scaled coordinate system,
+      so their numbers are not page type sizes.
+
+   Contrast note: the reference site uses black at 40%, which is 2.85:1 on
+   white and fails AA even for large text. 55% is 4.74:1 and passes. That is
+   why these do not match the reference exactly.                             */
+
+/* ---------- typeface ----------
+   Archivo, a grotesque in the same family of shapes as the reference site's
+   Lab Grotesque, but under the SIL Open Font License. Self-hosted from this
+   repository: nothing is requested from a third party, so the privacy rule in
+   PRINCIPLES.md §4 holds. One variable file covers 300–600, which is the whole
+   weight range this page uses.
+   Licence: assets/fonts/OFL.txt. Keep it alongside the files.                */
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 300 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/archivo-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+                 U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122,
+                 U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Archivo";
+  font-style: normal;
+  font-weight: 300 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("fonts/archivo-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+                 U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF,
+                 U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+:root {
+  --ink: #000;
+  --ink-muted: rgba(0, 0, 0, 0.55);   /* 4.74:1 on paper — AA */
+  --paper: #fff;
+
+  --s-name: clamp(2rem, 6vw, 2.5rem); /* 32–40px */
+  --s-head: 1.5rem;                   /* 24px */
+  --s-body: 1.125rem;                 /* 18px */
+  --s-meta: 0.9375rem;                /* 15px */
+
+  --measure: 34rem;                   /* ~66 characters — reading width */
+  --page: 60rem;                      /* the band the work is allowed to fill */
+  --gap: clamp(6rem, 20vh, 11rem);    /* one project should own the screen */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #fff;
+    --ink-muted: rgba(255, 255, 255, 0.55); /* 6.3:1 on black — AA */
+    --paper: #000;
+  }
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  /* The slot is sticky, so anchored jumps must clear it or they land with the
+     heading hidden underneath. */
+  scroll-padding-top: 6rem;
+}
+
+main > section, h1, h2 { scroll-margin-top: 6rem; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+               Helvetica, Arial, sans-serif;
+  font-size: var(--s-body);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- links ---------- */
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+a:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  left: -9999px;
+}
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+  background: var(--paper);
+  padding: 0.5rem 0.75rem;
+}
+
+/* ---------- layout ---------- */
+
+.head,
+main > section,
+footer {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding-inline: clamp(1.25rem, 6vw, 3rem);
+}
+
+/* Enough air to breathe, not so much that the slot floats free of the work. */
+.head { padding-top: clamp(4rem, 16vh, 8rem); padding-bottom: clamp(2rem, 5vh, 3rem); }
+
+main > section { padding-block: 0 var(--gap); }
+
+/* ---------- header ---------- */
+
+h1 {
+  font-size: var(--s-name);
+  font-weight: 300;
+  letter-spacing: -0.025em;
+  margin: 0;
+}
+
+.lede {
+  font-size: var(--s-body);
+  max-width: var(--measure);
+  margin: 0.6rem 0 2rem;
+}
+
+/* ---------- the one idea ----------
+   A single sticky line. One fixed position, one changing value.
+   Hidden entirely when JavaScript is off — each project carries its own line
+   in the markup instead, so nothing is lost. */
+
+.slot {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--paper);
+}
+.no-js .slot { display: none; }
+
+.slot-inner {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding: 1.1rem clamp(1.25rem, 6vw, 3rem) 1.3rem;
+}
+
+.slot-label {
+  display: block;
+  color: var(--ink-muted);
+  font-size: var(--s-meta);
+}
+.slot-label::after { content: ""; }
+
+/* Big and light, the way the reference sets its year. This is the line the
+   reader is meant to watch, so it gets the weight budget the page has been
+   saving: 24px at 300 against 600 elsewhere. */
+.slot-value {
+  display: inline-block;
+  font-size: var(--s-head);
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  transition: opacity 0.35s ease;
+}
+.slot-value.is-changing { opacity: 0; }
+
+/* Above the first project and below the last there is no audience to name.
+   Showing the previous one would be stale and wrong, so the line goes quiet. */
+.slot { transition: opacity 0.3s ease; }
+.slot.is-idle { opacity: 0; }
+
+/* ---------- projects ---------- */
+
+.project h2 {
+  font-size: var(--s-head);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 1.5rem 0 0.4rem;
+}
+
+.project p { max-width: var(--measure); margin: 0 0 0.9rem; }
+
+/* Text reads narrow, work shows wide. */
+.project h2, .also li, .about p { max-width: var(--measure); }
+
+/* Each project states its own audience. Visible when JS is off (it is the
+   only place the information appears); available to screen readers always,
+   so the sticky slot can stay decorative and nothing is announced twice. */
+.who { color: var(--ink-muted); }
+
+.js .who {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0; border: 0;
+  clip-path: inset(50%);
+  overflow: hidden; white-space: nowrap;
+}
+
+.stack, .m, figcaption { color: var(--ink-muted); font-size: var(--s-meta); }
+
+.links-inline { display: flex; gap: 1.25rem; font-size: var(--s-meta); }
+
+/* Inherits its size deliberately. The usual 0.9em optical correction would
+   introduce a fifth and sixth rendered size and break the economy rule. */
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1em;
+}
+
+/* ---------- artifacts ---------- */
+
+.art { margin: 0 0 1.5rem; }
+
+.art figcaption { margin-top: 0.6rem; }
+
+/* Wide diagrams scroll inside their own box; the page never scrolls sideways.
+   The caption sits outside the scroller so it stays put. The right-edge fade
+   is the affordance that says "there is more" — it paints in --paper, so it
+   introduces no fourth colour. */
+.dia-wrap {
+  overflow-x: auto;
+  position: relative;
+  -webkit-overflow-scrolling: touch;
+}
+
+@media (max-width: 40rem) {
+  .dia-wrap::after {
+    content: "";
+    position: sticky;
+    float: right;
+    top: 0;
+    right: 0;
+    width: 2.5rem;
+    height: 100%;
+    margin-left: -2.5rem;
+    background: linear-gradient(to right, transparent, var(--paper));
+    pointer-events: none;
+  }
+}
+
+.dia {
+  display: block;
+  width: 100%;
+  min-width: 38rem;   /* below this the labels stop being readable */
+  margin-bottom: 0.25rem;
+  height: auto;
+  color: var(--ink);
+}
+
+.dia-g rect {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+}
+.dia-g rect.sub { stroke: currentColor; opacity: 0.55; }
+
+.dia-g text {
+  fill: currentColor;
+  font-family: inherit;
+  font-size: 16px;
+  text-anchor: middle;
+}
+.dia-g text.hd { font-weight: 600; }
+.dia-g text.sm { font-size: 14px; opacity: 0.7; }
+
+.dia-g .ar {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  opacity: 0.7;
+}
+.dia-g .dash { stroke-dasharray: 4 4; }
+
+/* Placeholders — deliberately unfinished-looking. These must not survive to
+   launch; if one is still here, the page is not done. */
+.ph {
+  border: 1px dashed var(--ink-muted);
+  padding: clamp(1.5rem, 6vw, 3rem);
+  display: grid;
+  place-items: center;
+  min-height: 9rem;
+}
+.ph p { color: var(--ink-muted); font-size: var(--s-meta); max-width: 28rem; text-align: center; margin: 0; }
+
+/* ---------- also built ---------- */
+
+.also h2, .about h2 {
+  font-size: var(--s-head);
+  font-weight: 600;
+  margin: 0 0 1.25rem;
+}
+
+.also ul { list-style: none; margin: 0; padding: 0; }
+.also li { max-width: var(--measure); margin-bottom: 1.1rem; }
+.also strong { font-weight: 600; }
+
+/* ---------- about ---------- */
+
+.about-grid {
+  display: grid;
+  gap: clamp(1.5rem, 5vw, 3rem);
+  grid-template-columns: 1fr;
+}
+@media (min-width: 46rem) {
+  .about-grid { grid-template-columns: 1fr 15rem; align-items: start; }
+}
+.portrait { min-width: 0; }
+.portrait .ph { min-height: 14rem; }
+
+/* ---------- lists of links ---------- */
+
+.links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  font-size: var(--s-meta);
+}
+
+/* ---------- footer ---------- */
+
+footer {
+  padding-block: var(--gap) 4rem;
+  color: var(--ink-muted);
+  font-size: var(--s-meta);
+}
+footer p { margin: 0; }
+
+/* ---------- motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
