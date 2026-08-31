@@ -248,20 +248,20 @@ code {
    is the affordance that says "there is more" - it paints in --paper, so it
    introduces no fourth colour. */
 .dia-wrap {
+  display: flex;
   overflow-x: auto;
-  position: relative;
   -webkit-overflow-scrolling: touch;
 }
 
+/* The fade is a flex item, not a float. As a float with height:100% it
+   resolved against an auto-height parent and computed to 0, so it never
+   painted. A flex item stretches to the line height for free. */
 @media (max-width: 40rem) {
   .dia-wrap::after {
     content: "";
     position: sticky;
-    float: right;
-    top: 0;
     right: 0;
-    width: 2.5rem;
-    height: 100%;
+    flex: 0 0 2.5rem;
     margin-left: -2.5rem;
     background: linear-gradient(to right, transparent, var(--paper));
     pointer-events: none;
@@ -312,6 +312,41 @@ code {
   min-height: 9rem;
 }
 .ph p { color: var(--ink-muted); font-size: var(--s-meta); max-width: 28rem; text-align: center; margin: 0; }
+
+/* The Titan failover strip: three captures of the same dashboard, stacked.
+   Read top to bottom they are healthy, failed over, recovered. Each crop is
+   nearly six times wider than it is tall, so on a narrow screen the strip
+   scrolls inside its own box rather than shrinking the node cards to nothing.
+   Same mechanism as .dia-wrap, and the captions sit outside the scroller. */
+.states { display: grid; gap: 1.5rem; margin: 0; }
+
+/* Grid and flex items default to min-width:auto, which lets a wide child push
+   the track open and the whole page sideways. This is what keeps the overflow
+   inside .state-scroll where it belongs. */
+.state, .state-scroll { min-width: 0; }
+
+.state { margin: 0; }
+
+.state-scroll { display: flex; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+/* The same right-edge fade the diagrams use, for the same reason: on a phone
+   the third node card sits off the right edge and nothing else says so. It
+   paints in --paper, so it adds no fourth colour. */
+@media (max-width: 40rem) {
+  .state-scroll::after {
+    content: "";
+    position: sticky;
+    right: 0;
+    flex: 0 0 2.5rem;
+    margin-left: -2.5rem;
+    background: linear-gradient(to right, transparent, var(--paper));
+    pointer-events: none;
+  }
+}
+
+.state-shot { display: block; width: 100%; min-width: 32rem; height: auto; }
+
+.state figcaption { margin-top: 0.5rem; }
 
 /* ---------- also built ---------- */
 

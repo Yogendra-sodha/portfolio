@@ -198,24 +198,31 @@ schematic beats a screenshot of a dashboard anyway.
 |---|---|---|
 | MCP server | Schematic: a question in plain language → the tool layer (SQL execution · document generation · retrieval over equipment manuals) → the database → an answer, with the audit log drawn as a first-class output. The audit log is the detail that shows judgement, so it gets weight. | Drawn in code |
 | Pipelines | Schematic: three sources fan in, ingestion, a database cylinder for the dimensional models, then a fan-out to dashboards, reports, alerts and the MCP server. The fan-out is the point: it shows the projects are one system, not four unrelated items. | Drawn in code |
-| Titan | The dashboard, cropped hard. **Three states**: `3/3 online · leader #1`; after killing node 1, `2/3 online · leader #2`; then node 1 back and following, `3/3 online · leader #2`. Failure and recovery, no video needed. | Owner recaptures |
+| Titan | **Done.** The dashboard three times, cropped to the status line and the cluster row: `3/3 online · leader #1`; after killing node 1, `2/3 online · leader #2`; then node 1 back and following, `3/3 online · leader #2`. Failure and recovery, no video needed. | Supplied |
 | MenuWeek | **Done.** Four real screens, status bars removed, - tonight's plan, the week, the grocery list, the recipe book - in CSS-drawn phone frames. | Supplied |
 
-### Recapturing Titan
+### How Titan was cropped
 
-The supplied screenshot has the right content and the wrong frame. Remove
-everything that is not the product:
+Recorded because the next capture should match. The three captures were cut to
+the same band: **the app's own header row and the cluster row, nothing else.**
 
-- **Crop to the Titan panel only** — no browser chrome, no address bar, no
-  bookmarks, no "Ask Gemini" button, no "New Chrome available" banner, no
-  Windows title bars.
-- **Three captures, same crop**: healthy, leader killed, old leader rejoined as
-  a follower. Side by side they prove failover and recovery; any one alone
-  proves nothing.
-- The terminals are optional. If they are included, one is enough, and it should
-  show the election, not the cargo build warnings.
-- Its palette — near-black terminal, near-white dashboard, a green status dot —
-  already fits the page. Its colour is allowed because it is the artifact's own.
+- The crop edges are found from the image rather than typed in. The dashboard
+  draws two dark horizontal rules - under the header, and around the cluster
+  box - so the crop runs from 134px above the box's top rule to 3px below its
+  bottom rule. That lands identically on all three captures even though the
+  browser window moved a few pixels between them.
+- **What this removes:** the browser chrome, the address bar showing
+  `127.0.0.1:8001`, the profile avatar, and the WRITE and READ panels. Dropping
+  the READ panel also drops its demo table of names and salaries, so the
+  question of what is in a screenshot never arises.
+- **What it keeps:** the status readout at the top right (`3/3 online · leader
+  #1`), which is the one line that states each capture's whole point.
+- All three are resized to 1900px wide so they stack with their node cards in
+  the same columns. Stored as WebP, about 20 KB each.
+- The terminals were not used. They carry a shell prompt with a local file path
+  and cargo build warnings, and the dashboard already tells the story.
+- Its palette - cream ground, near-black type, a green status dot and one red
+  offline badge - is allowed because it is the artifact's own.
 
 ## Open
 
