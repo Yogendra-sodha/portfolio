@@ -204,10 +204,28 @@
 
   <section class="project" data-who="anyone who pip installs it">
     <figure class="art">
-      <div class="ph">
-        <p><strong>Screenshots to come:</strong> the dashboard in three states - all three nodes
-        up with node 1 leading, node 1 killed and node 2 elected in its place, then node 1 back
-        and following. The recovery is the half most demos leave out.</p>
+      <div class="states">
+      <figure class="state">
+        <div class="state-scroll">
+          <img class="state-shot" src="assets/img/titan-healthy.webp" width="1900" height="334"
+               loading="lazy" decoding="async" alt="Titan's dashboard: 3 of 3 nodes online, node 1 the leader. All three cards show term 222 and commit index 21.">
+        </div>
+        <figcaption>All three nodes up. Node 1 leads.</figcaption>
+      </figure>
+      <figure class="state">
+        <div class="state-scroll">
+          <img class="state-shot" src="assets/img/titan-failover.webp" width="1900" height="335"
+               loading="lazy" decoding="async" alt="The same dashboard after node 1 is killed: 2 of 3 online, node 2 now the leader. Node 1's card reads offline; the other two have moved to term 223 and still show commit index 21.">
+        </div>
+        <figcaption>Node 1 killed. Node 2 elected, and writes carry on.</figcaption>
+      </figure>
+      <figure class="state">
+        <div class="state-scroll">
+          <img class="state-shot" src="assets/img/titan-recovered.webp" width="1900" height="334"
+               loading="lazy" decoding="async" alt="The same dashboard after node 1 restarts: 3 of 3 online, node 2 still the leader, node 1 marked follower. All three cards agree again, at term 288 and commit index 21.">
+        </div>
+        <figcaption>Node 1 back, following, caught up to the same commit index.</figcaption>
+      </figure>
       </div>
     </figure>
     <h2>Titan - distributed SQLite</h2>

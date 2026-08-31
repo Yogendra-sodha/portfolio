@@ -77,17 +77,15 @@ nothing to store.
 
 ## Still outstanding
 
-The page is honest about what it does not have yet. The remaining dashed boxes
-are placeholders and **must not survive to launch**.
+The page is honest about what it does not have yet. Any dashed placeholder box
+**must not survive to launch**; the last one is now gone.
 
-MenuWeek is done: four real screens in CSS-drawn phone frames.
+Both screenshot sets are done. MenuWeek is four real screens in CSS-drawn
+phone frames; Titan is three captures of the dashboard, cropped to the status
+line and the cluster row.
 
-1. **Titan screenshots** — the dashboard cropped to the panel, no browser or
-   Windows chrome. Three captures, same crop: `3/3 online · leader #1`, then
-   after killing node 1, `2/3 online · leader #2`, then node 1 back and
-   following. The recovery state is the one most demos leave out.
-2. **A photograph.**
-3. **The résumé.** Not linked yet, deliberately: the PDF prints
+1. **A photograph.**
+2. **The résumé.** Not linked yet, deliberately: the PDF prints
    `github.com/yogendrasinh-sodha`, which is a 404. The correct account is
    `github.com/Yogendra-sodha`. Fix the document, then add the link in the
    header where the comment marks the spot.
